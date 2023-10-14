@@ -1,8 +1,8 @@
 package br.com.app.conatus.entities;
 
+import java.io.Serializable;
 import java.time.ZonedDateTime;
 
-import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
@@ -11,7 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,28 +22,32 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "TB_TENANT")
+@Table(name = "TB_USUARIO_TENANT")
 @Builder @AllArgsConstructor @NoArgsConstructor
 @Setter @Getter @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class TenantEntity {
+public class UsuarioTenantEntity implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	
 	@Id @Include
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "IDENT")
 	private Long id;
-
-	@Column(name = "DS_NOME")
-	private String nome;
 	
-	@CreationTimestamp
-	@Column(name = "DT_CADASTRO")
-	private ZonedDateTime dataCadastro;
+	@ManyToOne
+	@JoinColumn(name = "ID_USUARIO")
+	private UsuarioEntity usuario;
+	
+	@ManyToOne
+	@JoinColumn(name = "ID_TENANT")
+	private TenantEntity tenant;
+	
+	@ManyToOne
+	@JoinColumn(name = "ID_DOM_SITUACAO")
+	private DominioEntity situacao;
 	
 	@UpdateTimestamp
 	@Column(name = "DT_ATUALIZACAO")
 	private ZonedDateTime dataAtualizacao;
-	
-	@OneToOne
-	@JoinColumn(name = "ID_PESSOA_JURIDICA", unique = true, nullable = false)
-	private PessoaJuridicaEntity pessoaJuridica;
+
 }
