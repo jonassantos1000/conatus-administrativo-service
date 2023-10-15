@@ -44,8 +44,8 @@ public class LicencaEntity implements Serializable{
 	private DominioEntity situacao;
 	
 	@OneToOne
-	@JoinColumn(name = "ID_PESSOA_JURIDICA")
-	private PessoaJuridicaEntity pessoaJuridica;
+	@JoinColumn(name = "ID_TENANT")
+	private TenantEntity tenant;
 	
 	@Column(name = "DT_EXPIRACAO")
 	private ZonedDateTime dataExpiracao;
