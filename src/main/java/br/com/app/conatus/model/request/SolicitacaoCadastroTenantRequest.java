@@ -1,17 +1,17 @@
 package br.com.app.conatus.model.request;
 
-import br.com.app.conatus.model.PessoaJuridica;
-import br.com.app.conatus.model.UsuarioCadastro;
+import br.com.app.conatus.model.PessoaJuridicaRecord;
+import br.com.app.conatus.model.UsuarioRecord;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
 public record SolicitacaoCadastroTenantRequest(
 		
 		@Valid
-		PessoaJuridica pessoaJuridica,
+		PessoaJuridicaRecord pessoaJuridica,
 		
 		@Valid
-		UsuarioCadastro usuario,
+		UsuarioRecord usuario,
 		
 		@NotNull(message = "O campo plano é obrigatorio")
 		Long idPlano) {

@@ -6,17 +6,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.app.conatus.model.request.SolicitacaoCadastroTenantRequest;
+import br.com.app.conatus.service.TenantService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
 
 @RestController
-@RequestMapping("/pessoas-juridicas")
-public class PessoaJuridicaController {
+@RequestMapping("/tenant")
+@RequiredArgsConstructor
+public class TenantController {
 	
+	private TenantService tenantService;
 	
 	@PostMapping
-	public void cadastrarPessoaJuridica(@RequestBody @Valid SolicitacaoCadastroTenantRequest pessoaJuridica) {
-		
+	public void cadastrarTenant(@RequestBody @Valid SolicitacaoCadastroTenantRequest solicitacaoTenant) {
+		tenantService.cadastrarTenant(solicitacaoTenant);
 	}
 
 }

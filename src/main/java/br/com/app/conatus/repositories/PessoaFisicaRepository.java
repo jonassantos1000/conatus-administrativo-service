@@ -8,4 +8,6 @@ import br.com.app.conatus.entities.PessoaFisicaEntity;
 @Repository
 public interface PessoaFisicaRepository extends JpaRepository<PessoaFisicaEntity, Long>{
 
+	boolean existsByCpf(String cpf);
+
 }

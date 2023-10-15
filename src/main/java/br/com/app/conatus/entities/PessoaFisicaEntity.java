@@ -7,15 +7,15 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Table(name = "TB_PESSOA_FISICA")
 @PrimaryKeyJoinColumn(name="ID_PESSOA")
-@Builder @Setter @Getter 
+@SuperBuilder @Setter @Getter 
 @AllArgsConstructor @NoArgsConstructor
 public class PessoaFisicaEntity extends PessoaEntity {
 

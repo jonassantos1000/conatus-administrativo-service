@@ -5,7 +5,7 @@ import org.hibernate.validator.constraints.br.CNPJ;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-public record PessoaJuridica(
+public record PessoaJuridicaRecord(
 		
 		@NotBlank(message = "O campo nomeFantasia é obrigatorio")
 		String nomeFantasia,
