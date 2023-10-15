@@ -15,6 +15,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -49,6 +50,10 @@ public class UsuarioEntity implements Serializable{
 	
 	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
 	private Set<UsuarioTenantEntity> tenants;
+	
+	@OneToOne
+	@JoinColumn(name = "ID_TENANT_SELECIONADO")
+	private TenantEntity tenantSelecionado;
 	
 	@ManyToOne
 	@JoinColumn(name = "ID_DOM_SITUACAO")
