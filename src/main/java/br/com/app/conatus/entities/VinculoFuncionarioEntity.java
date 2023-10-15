@@ -39,7 +39,7 @@ public class VinculoFuncionarioEntity implements Serializable{
 	private PessoaFisicaEntity funcionario;
 	
 	@ManyToOne
-	@JoinColumn(name = "ID_PESSOA_JURIFICA")
+	@JoinColumn(name = "ID_PESSOA_JURIDICA")
 	private PessoaJuridicaEntity empresa;
 	
 	@ManyToOne
