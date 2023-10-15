@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class TenantController {
 	
-	private TenantService tenantService;
+	private final TenantService tenantService;
 	
 	@PostMapping
 	public void cadastrarTenant(@RequestBody @Valid SolicitacaoCadastroTenantRequest solicitacaoTenant) {
