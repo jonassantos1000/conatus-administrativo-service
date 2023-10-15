@@ -43,6 +43,10 @@ public class UsuarioEntity implements Serializable{
 	@Column(name = "DS_TOKEN")
 	private String token;
 	
+	@ManyToOne
+	@JoinColumn(name = "ID_PESSOA")
+	private PessoaFisicaEntity pessoa;
+	
 	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
 	private Set<UsuarioTenantEntity> tenants;
 	
