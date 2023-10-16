@@ -12,7 +12,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -43,12 +42,8 @@ public class LicencaEntity implements Serializable{
 	@JoinColumn(name = "ID_DOM_SITUACAO")
 	private DominioEntity situacao;
 	
-	@OneToOne
-	@JoinColumn(name = "ID_TENANT")
-	private TenantEntity tenant;
-	
-	@Column(name = "DT_EXPIRACAO")
-	private ZonedDateTime dataExpiracao;
+	@Column(name = "QT_DURACAO_LICENCA")
+	private Integer duracaoLicenca;
 
 	@UpdateTimestamp
 	@Column(name = "DT_ATUALIZACAO")

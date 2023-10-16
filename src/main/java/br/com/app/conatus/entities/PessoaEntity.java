@@ -21,6 +21,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.EqualsAndHashCode.Include;
+import lombok.experimental.SuperBuilder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,7 +29,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "TB_PESSOA")
 @AllArgsConstructor @NoArgsConstructor
-@Getter @Setter
+@SuperBuilder @Getter @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Inheritance(strategy = InheritanceType.JOINED)
 public class PessoaEntity implements Serializable{
@@ -42,6 +43,9 @@ public class PessoaEntity implements Serializable{
 	
 	@Column(name = "DS_NOME")
 	private String nome;
+	
+	@Column(name = "DS_EMAIL")
+	private String email;
 	
 	@Column(name = "DT_ATUALIZACAO")
 	@UpdateTimestamp
