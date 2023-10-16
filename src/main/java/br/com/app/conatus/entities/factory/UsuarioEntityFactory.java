@@ -9,12 +9,12 @@ public class UsuarioEntityFactory {
 
 	private UsuarioEntityFactory() {}
 
-	public static UsuarioEntity converterParaEntity(UsuarioRecord usuario, PessoaFisicaEntity pf, DominioEntity situacaoAtiva) {
+	public static UsuarioEntity converterParaEntity(UsuarioRecord usuario, PessoaFisicaEntity pf, String hashSenha,DominioEntity situacaoAtiva) {
 		
 		return UsuarioEntity.builder()
 				.pessoa(pf)
 				.situacao(situacaoAtiva)
-				.senha(usuario.senha())
+				.senha(hashSenha)
 				.build();
 	}
 	

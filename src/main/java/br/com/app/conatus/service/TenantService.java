@@ -46,6 +46,7 @@ public class TenantService {
 	private final VinculoFuncionarioRepository vinculoFuncionarioRepository;
 	
 	private final DominioService dominioService;
+	private final AutenticacaoService autenticacaoService;
 	
 	@Transactional
 	public void cadastrarTenant(SolicitacaoCadastroTenantRequest solicitacaoTenant) {
@@ -58,7 +59,7 @@ public class TenantService {
 				dominioService.recuperarPorId(solicitacaoTenant.usuario().idGenero()), situacaoAtiva));
 
 		UsuarioEntity solicitante = usuarioRepository
-				.save(UsuarioEntityFactory.converterParaEntity(solicitacaoTenant.usuario(), pf, situacaoAtiva));
+				.save(UsuarioEntityFactory.converterParaEntity(solicitacaoTenant.usuario(), pf, autenticacaoService.gerarHashSenha(solicitacaoTenant.usuario().senha()), situacaoAtiva));
 
 		PessoaJuridicaEntity pj = pessoaJuridicaRepository.save(PessoaJuridicaEntityFactory.converterRecordParaEntity(solicitacaoTenant.pessoaJuridica(), 
 				dominioService.recuperarPorId(solicitacaoTenant.pessoaJuridica().idRamoAtividade()), situacaoAtiva));

@@ -6,21 +6,18 @@ import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import br.com.app.conatus.model.PessoaJuridicaRecord;
 import br.com.app.conatus.model.UsuarioRecord;
 import br.com.app.conatus.model.request.SolicitacaoCadastroTenantRequest;
 
 @SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
-@RunWith(SpringRunner.class)
 @ActiveProfiles("test")
 @TestMethodOrder(OrderAnnotation.class)
 class TenantControllerTest extends AbstractControllerTest{
