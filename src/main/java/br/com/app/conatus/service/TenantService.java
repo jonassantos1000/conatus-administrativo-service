@@ -16,6 +16,8 @@ import br.com.app.conatus.entities.factory.UsuarioEntityFactory;
 import br.com.app.conatus.entities.factory.UsuarioTenantEntityFactory;
 import br.com.app.conatus.entities.factory.VinculoFuncionarioEntityFactory;
 import br.com.app.conatus.enums.CodigoDominio;
+import br.com.app.conatus.infra.exceptions.MsgException;
+import br.com.app.conatus.infra.exceptions.NaoEncontradoException;
 import br.com.app.conatus.model.PessoaJuridicaRecord;
 import br.com.app.conatus.model.UsuarioRecord;
 import br.com.app.conatus.model.request.SolicitacaoCadastroTenantRequest;
@@ -74,7 +76,7 @@ public class TenantService {
 	
 	private LicencaEntity recuperarLicencaPorId(Long id) {
 		return licencaRepository.findById(id)
-				.orElseThrow(() -> new IllegalArgumentException("Licença informada é invalida"));
+				.orElseThrow(() -> new NaoEncontradoException("Licença informada é invalida"));
 	}
 
 	private void validarSolicitacaoCadastroTenant(SolicitacaoCadastroTenantRequest solicitacaoTenant) {
@@ -84,13 +86,13 @@ public class TenantService {
 
 	private void verificarPessoaFisica(UsuarioRecord usuario) {
 		if (pessoaFisicaRepository.existsByCpf(usuario.cpf())) {
-			throw new IllegalArgumentException("Usuário informado já possui cadastro");
+			throw new MsgException("Usuário informado já possui cadastro");
 		}
 	}
 
 	private void verificarPessoaJuridica(PessoaJuridicaRecord pessoaJuridica) {
 		if (pessoaJuridicaRepository.existsByCnpj(pessoaJuridica.cnpj())) {
-			throw new IllegalArgumentException("Pessoa juridica informada já possui cadastro");
+			throw new MsgException("Pessoa juridica informada já possui cadastro");
 		}
 	}
 
