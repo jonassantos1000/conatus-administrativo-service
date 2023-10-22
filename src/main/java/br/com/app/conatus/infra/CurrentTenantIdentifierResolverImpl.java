@@ -11,10 +11,10 @@ import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
-public class TenantManagement implements CurrentTenantIdentifierResolver, HibernatePropertiesCustomizer {
+public class CurrentTenantIdentifierResolverImpl implements CurrentTenantIdentifierResolver, HibernatePropertiesCustomizer {
    	
 	private static final String TENANT_DEFAULT = "UNKNOWN";
-	private static ThreadLocal<String> tenant = ThreadLocal.withInitial(() -> TENANT_DEFAULT);
+	private static ThreadLocal<String> tenant = new ThreadLocal<String>();
 
 	public static void setCurrencyTenant(String tenantRequest) {
 		tenant.set(tenantRequest);
@@ -26,6 +26,10 @@ public class TenantManagement implements CurrentTenantIdentifierResolver, Hibern
 	
 	@Override
     public String resolveCurrentTenantIdentifier() {
+		if (tenant.get() == null) {
+			return TENANT_DEFAULT;
+		}
+		
         return tenant.get();
     }
 

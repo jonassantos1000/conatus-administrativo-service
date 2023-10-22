@@ -2,6 +2,8 @@ package br.com.app.conatus.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.List;
+
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -15,6 +17,7 @@ import org.springframework.test.context.ActiveProfiles;
 
 import br.com.app.conatus.model.PessoaJuridicaRecord;
 import br.com.app.conatus.model.UsuarioRecord;
+import br.com.app.conatus.model.request.ModuloRequest;
 import br.com.app.conatus.model.request.SolicitacaoCadastroTenantRequest;
 
 @SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
@@ -53,8 +56,7 @@ class TenantControllerTest extends AbstractControllerTest{
 	}
 
 	private SolicitacaoCadastroTenantRequest gerarSolicitacaoTenant() {
-		
-		return new SolicitacaoCadastroTenantRequest(gerarPessoaJuridica(), gerarUsuario(), 1L);
+		return new SolicitacaoCadastroTenantRequest(gerarPessoaJuridica(), gerarUsuario(), List.of(gerarModulo()));
 	}
 	
 	private PessoaJuridicaRecord gerarPessoaJuridica() {
@@ -65,6 +67,10 @@ class TenantControllerTest extends AbstractControllerTest{
 	private UsuarioRecord gerarUsuario() {
 		
 		return new UsuarioRecord("50229624898", 1L, "jonas silva", "jvale@magnasistemas.com.br", "123456789", "123456");
+	}
+	
+	private ModuloRequest gerarModulo() {
+		return new ModuloRequest(1L, List.of());
 	}
 
 }

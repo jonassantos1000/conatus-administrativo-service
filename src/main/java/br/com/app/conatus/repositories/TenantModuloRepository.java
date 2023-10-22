@@ -3,9 +3,9 @@ package br.com.app.conatus.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.com.app.conatus.entities.LicencaEntity;
+import br.com.app.conatus.entities.TenantModuloEntity;
 
 @Repository
-public interface LicencaRepository extends JpaRepository<LicencaEntity, Long>{
-	
+public interface TenantModuloRepository extends JpaRepository<TenantModuloEntity, Long>{
+
 }

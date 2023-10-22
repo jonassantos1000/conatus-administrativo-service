@@ -1,8 +1,9 @@
 package br.com.app.conatus.entities;
 
-import java.io.Serializable;
 import java.time.ZonedDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.TenantId;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
@@ -16,31 +17,35 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
-import lombok.EqualsAndHashCode.Include;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "TB_PLANO_CONTRATACAO")
+@Table(name = "TB_TENANT_MODULO")
 @Builder @AllArgsConstructor @NoArgsConstructor
 @Setter @Getter @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class PlanoContratacaoEntity implements Serializable{
+public class TenantModuloEntity {
 	
-	private static final long serialVersionUID = 1L;
-	
-	@Id @Include
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "IDENT")
 	private Long id;
 
+	@JoinColumn(name = "FL_POSSUI_CUSTOM")
+	private Boolean flagPossuiCustom;
+	
+	@TenantId
+	@Column(name = "ID_TENANT", insertable = false, updatable = false)
+	private String idTenant;
+	
 	@ManyToOne
-	@JoinColumn(name = "ID_TENANT", unique = true, nullable = false)
+	@JoinColumn(name = "ID_TENANT")
 	private TenantEntity tenant;
 	
 	@ManyToOne
-	@JoinColumn(name = "ID_LICENCA", nullable = false)
-	private LicencaEntity licenca;
+	@JoinColumn(name = "ID_MODULO")
+	private ModuloEntity modulo;
 	
 	@ManyToOne
 	@JoinColumn(name = "ID_DOM_SITUACAO")
@@ -49,11 +54,12 @@ public class PlanoContratacaoEntity implements Serializable{
 	@Column(name = "DT_EXPIRACAO")
 	private ZonedDateTime dataExpiracao;
 	
-	@Column(name = "DT_CONTRATACAO")
-	private ZonedDateTime dataContratacao;
-
+	@CreationTimestamp
+	@Column(name = "DT_CADASTRO")
+	private ZonedDateTime dataCadastro;
+	
 	@UpdateTimestamp
 	@Column(name = "DT_ATUALIZACAO")
 	private ZonedDateTime dataAtualizacao;
-
+	
 }
