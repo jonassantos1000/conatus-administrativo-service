@@ -28,6 +28,9 @@ public class DominioTipoEntity implements Serializable{
 	@Column(name = "DS_TIPO_DOMINIO")
 	private String descricao;
 	
+	@Column(name = "COD_TIPO_DOMINIO")
+	private String codigo;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_DOM_SITUACAO")
 	private DominioEntity situacao;

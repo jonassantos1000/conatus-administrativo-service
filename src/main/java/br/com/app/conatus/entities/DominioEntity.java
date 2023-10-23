@@ -4,7 +4,9 @@ import java.io.Serializable;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,5 +33,8 @@ public class DominioEntity implements Serializable {
 	
 	@Column(name = "COD_DOMINIO")
 	private String codigo;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private DominioTipoEntity tipo;
 	
 }
