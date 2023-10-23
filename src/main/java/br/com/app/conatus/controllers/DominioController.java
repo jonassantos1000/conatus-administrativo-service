@@ -25,16 +25,16 @@ public class DominioController {
 	}
 	
 	@GetMapping("/codigos/{codDominio}")
-	public DominioResponse buscarDominioPorId(@PathVariable String codDominio) {
+	public DominioResponse buscarDominioPorCodigo(@PathVariable String codDominio) {
 		return dominioService.buscarDominioPorCodigo(codDominio);
 	}
 	
-	@GetMapping("/tipos/{idTipo}")
+	@GetMapping("/tipos-id/{idTipo}")
 	public List<DominioResponse> buscarDominioPorCodigoTipo(@PathVariable Long idTipo) {
 		return dominioService.buscarDominioPorIdTipo(idTipo);
 	}
 	
-	@GetMapping("/tipos/codigos/{codTipo}")
+	@GetMapping("/tipos-codigos/{codTipo}")
 	public List<DominioResponse> buscarDominioPorCodigoTipo(@PathVariable String codTipo) {
 		return dominioService.buscarDominioPorCodigoTipo(codTipo);
 	}
