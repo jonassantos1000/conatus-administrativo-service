@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.app.conatus.entities.DominioEntity;
 import br.com.app.conatus.enums.CodigoDominio;
+import br.com.app.conatus.infra.exceptions.NaoEncontradoException;
 import br.com.app.conatus.repositories.DominioRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -15,12 +16,12 @@ public class DominioService {
 	
 	public DominioEntity recuperarPorId(Long id) {
 		return dominioRepository.findById(id).orElseThrow(
-				() -> new IllegalArgumentException("Não foi encontrado um dominio com id: %d".formatted(id)));
+				() -> new NaoEncontradoException("Não foi encontrado um dominio com id: %d".formatted(id)));
 	}
 	
 	public DominioEntity recuperarPorCodigo(CodigoDominio codigo) {
 		return dominioRepository.findByCodigo(codigo.name()).orElseThrow(
-				() -> new IllegalArgumentException("Não foi encontrado um dominio com codigo: %s".formatted(codigo.name())));
+				() -> new NaoEncontradoException("Não foi encontrado um dominio com codigo: %s".formatted(codigo.name())));
 	}
 
 }

@@ -2,25 +2,25 @@ package br.com.app.conatus.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.List;
+
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import br.com.app.conatus.model.PessoaJuridicaRecord;
 import br.com.app.conatus.model.UsuarioRecord;
+import br.com.app.conatus.model.request.ModuloRequest;
 import br.com.app.conatus.model.request.SolicitacaoCadastroTenantRequest;
 
 @SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
-@RunWith(SpringRunner.class)
 @ActiveProfiles("test")
 @TestMethodOrder(OrderAnnotation.class)
 class TenantControllerTest extends AbstractControllerTest{
@@ -56,18 +56,21 @@ class TenantControllerTest extends AbstractControllerTest{
 	}
 
 	private SolicitacaoCadastroTenantRequest gerarSolicitacaoTenant() {
-		
-		return new SolicitacaoCadastroTenantRequest(gerarPessoaJuridica(), gerarUsuario(), 1L);
+		return new SolicitacaoCadastroTenantRequest(gerarPessoaJuridica(), gerarUsuario(), List.of(gerarModulo()));
 	}
 	
 	private PessoaJuridicaRecord gerarPessoaJuridica() {
 		
-		return new PessoaJuridicaRecord("TESTE NOME FANTASIA", "88999814000122", "razaoSocial JUNIT", 4L);
+		return new PessoaJuridicaRecord("TESTE NOME FANTASIA", "21240122000125", "razaoSocial JUNIT", 400L);
 	}
 	
 	private UsuarioRecord gerarUsuario() {
 		
-		return new UsuarioRecord("50229624898", 1L, "jonas silva", "jvale@magnasistemas.com.br", "123456789", "123456");
+		return new UsuarioRecord("97092797004", 700L, "jonas silva", "teste@junit.com.br", "123456789", "123456");
+	}
+	
+	private ModuloRequest gerarModulo() {
+		return new ModuloRequest(1L, List.of());
 	}
 
 }

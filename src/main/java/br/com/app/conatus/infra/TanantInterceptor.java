@@ -16,7 +16,7 @@ public class TanantInterceptor implements HandlerInterceptor, WebMvcConfigurer {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		
-		TenantManagement.setCurrencyTenant(request.getHeader("tenant"));
+		CurrentTenantIdentifierResolverImpl.setCurrencyTenant(request.getHeader("tenant"));
 		
 		return true;
 	}
@@ -28,6 +28,6 @@ public class TanantInterceptor implements HandlerInterceptor, WebMvcConfigurer {
 	
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
-		TenantManagement.clear();
+		CurrentTenantIdentifierResolverImpl.clear();
 	}
 }

@@ -1,12 +1,10 @@
 package br.com.app.conatus.entities;
 
-import java.io.Serializable;
-import java.time.ZonedDateTime;
-
-import org.hibernate.annotations.UpdateTimestamp;
+import java.math.BigDecimal;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -22,30 +20,28 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "TB_LICENCA")
+@Table(name = "TB_FUNCIONALIDADE")
 @Builder @AllArgsConstructor @NoArgsConstructor
 @Setter @Getter @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class LicencaEntity implements Serializable{
-
-	private static final long serialVersionUID = 1L;
+public class FuncionalidadeEntity {
 
 	@Id @Include
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "IDENT")
 	private Long id;
 	
-	@ManyToOne
-	@JoinColumn(name = "ID_DOM_TIPO_LICENCA")
-	private DominioEntity tipoLicenca;
+	@Column(name = "DS_DESCRICAO")
+	private String descricao;
 	
-	@ManyToOne
-	@JoinColumn(name = "ID_DOM_SITUACAO")
-	private DominioEntity situacao;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ID_DOM_MODULO")
+	private DominioEntity modulo;
+		
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ID_DOM_TIPO")
+	private DominioEntity tipoFuncionalidade;
 	
-	@Column(name = "QT_DURACAO_LICENCA")
-	private Integer duracaoLicenca;
-
-	@UpdateTimestamp
-	@Column(name = "DT_ATUALIZACAO")
-	private ZonedDateTime dataAtualizacao;
+	@Column(name = "VL_FUNCIONALIDADE")
+	private BigDecimal valorFuncionalidade;
+	
 }

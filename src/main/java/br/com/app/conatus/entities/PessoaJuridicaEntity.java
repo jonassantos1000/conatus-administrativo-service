@@ -2,6 +2,7 @@ package br.com.app.conatus.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
@@ -27,7 +28,7 @@ public class PessoaJuridicaEntity extends PessoaEntity {
 	@Column(name = "DS_NOME_FANTASIA")
 	private String nomeFantasia;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_DOM_RAMO_ATIV")
 	private DominioEntity ramoAtividade;
 	
