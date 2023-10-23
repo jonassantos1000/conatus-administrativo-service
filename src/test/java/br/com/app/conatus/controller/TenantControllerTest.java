@@ -61,12 +61,12 @@ class TenantControllerTest extends AbstractControllerTest{
 	
 	private PessoaJuridicaRecord gerarPessoaJuridica() {
 		
-		return new PessoaJuridicaRecord("TESTE NOME FANTASIA", "88999814000122", "razaoSocial JUNIT", 4L);
+		return new PessoaJuridicaRecord("TESTE NOME FANTASIA", "21240122000125", "razaoSocial JUNIT", 400L);
 	}
 	
 	private UsuarioRecord gerarUsuario() {
 		
-		return new UsuarioRecord("50229624898", 1L, "jonas silva", "jvale@magnasistemas.com.br", "123456789", "123456");
+		return new UsuarioRecord("97092797004", 700L, "jonas silva", "teste@junit.com.br", "123456789", "123456");
 	}
 	
 	private ModuloRequest gerarModulo() {

@@ -6,6 +6,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,11 +31,11 @@ public class ModuloFuncionalidadeEntity {
 	@Column(name = "IDENT")
 	private Long id;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_MODULO")
 	private ModuloEntity modulo;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_FUNCIONALIDADE")
 	private FuncionalidadeEntity funcionalidade;
 	
@@ -42,7 +43,7 @@ public class ModuloFuncionalidadeEntity {
 	@Column(name = "DT_ATUALIZACAO")
 	private ZonedDateTime dataAtualizacao;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_DOM_SITUACAO")
 	private DominioEntity situacao;
 

@@ -2,6 +2,7 @@ package br.com.app.conatus.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
@@ -24,7 +25,7 @@ public class PessoaFisicaEntity extends PessoaEntity {
 	@Column(name = "CD_CPF")
 	private String cpf;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_DOM_GENERO")
 	private DominioEntity genero;
 	

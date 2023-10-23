@@ -7,6 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -31,6 +32,9 @@ public class TenantEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "IDENT")
 	private Long id;
+	
+	@Column(name = "CD_TENANT", unique = true)
+	private String codigoTenant;
 
 	@Column(name = "DS_NOME")
 	private String nome;
@@ -43,7 +47,7 @@ public class TenantEntity {
 	@Column(name = "DT_ATUALIZACAO")
 	private ZonedDateTime dataAtualizacao;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_PESSOA_JURIDICA", unique = true, nullable = false)
 	private PessoaJuridicaEntity pessoaJuridica;
 }

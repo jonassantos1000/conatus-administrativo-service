@@ -115,6 +115,8 @@ public class TenantService {
 	
 	private void salvarFuncionalidadePremium(List<FuncionalidadeRequest> funcionalidadesPremium, TenantModuloEntity tenantModulo, TransacaoEntity transacao) {
 		
+		DominioEntity situacaoAtivo = dominioService.recuperarPorCodigo(CodigoDominio.STATUS_ATIVO);
+		
 		funcionalidadesPremium.stream().forEach(funcRequest -> {
 			
 			FuncionalidadeEntity func = recuperarFuncionalidadePorId(funcRequest.idFuncionalidade());
@@ -129,7 +131,7 @@ public class TenantService {
 			
 			FuncionalidadeCustomizadaEntity funcCustom = funcionalidadeCustomizadaRepository.save(FuncionalidadeCustomizadaEntityFactory
 					.converterParaEntity(tenantModulo, func, 
-							dominioService.recuperarPorCodigo(CodigoDominio.STATUS_ATIVO),
+							situacaoAtivo,
 							LocalDateTime.now().plusDays(7L)));
 			
 			salvarMovimentacao(tenantModulo, transacao, funcCustom.getValorUltimaContratacao(), 
