@@ -30,17 +30,9 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
-          const result = 'Testes passaram com sucesso!';  # Mensagem de sucesso
-          if (process.env.GITHUB_ACTIONS === 'true') {
-            const prNumber = context.payload.pull_request.number;
-            const owner = context.repo.owner;
-            const repo = context.repo.repo;
-            github.issues.createComment({
-              owner: owner,
-              repo: repo,
-              issue_number: prNumber,
-              body: result
-            });
-          } else {
-            console.log('Ação executada localmente. Comentário não adicionado.');
-          }
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '👋 O Pull Request passou nos testes unitários automatizados!'
+            })
