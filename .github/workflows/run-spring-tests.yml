@@ -17,7 +17,8 @@ jobs:
       run: |
         # Configura o ambiente de teste, como a instalação do Java, Maven e outras dependências.
         sudo apt-get update
-        sudo apt-get install openjdk-11-jdk
+        sudo apt-get install openjdk-17-jre
+        sudo apt-get install openjdk-17-jdk
         sudo apt-get install maven
 
     - name: Executar Testes
