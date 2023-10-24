@@ -23,7 +23,7 @@ jobs:
     - name: Executar Testes
       run: |
         # Executar testes unitários do Spring.
-        mvn test
+        mvn test -Dspring.profiles.active=test
 
     - name: Comment on PR
       uses: actions/github-script@v6
