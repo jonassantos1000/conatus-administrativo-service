@@ -31,7 +31,7 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
           const result = 'Testes passaram com sucesso!';  # Mensagem de sucesso
-          if (process.env.GITHUB_RUNNER === 'GitHub Actions') {
+          if (process.env.GITHUB_ACTIONS === 'true') {
             const prNumber = context.payload.pull_request.number;
             const owner = context.repo.owner;
             const repo = context.repo.repo;
