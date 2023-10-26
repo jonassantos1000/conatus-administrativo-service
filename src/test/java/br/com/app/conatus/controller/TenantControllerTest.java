@@ -15,10 +15,10 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
 
-import br.com.app.conatus.model.PessoaJuridicaRecord;
-import br.com.app.conatus.model.UsuarioRecord;
 import br.com.app.conatus.model.request.ModuloRequest;
+import br.com.app.conatus.model.request.PessoaJuridicaRecordRequest;
 import br.com.app.conatus.model.request.SolicitacaoCadastroTenantRequest;
+import br.com.app.conatus.model.request.UsuarioRecordRequest;
 
 @SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
 @ActiveProfiles("test")
@@ -59,14 +59,14 @@ class TenantControllerTest extends AbstractControllerTest{
 		return new SolicitacaoCadastroTenantRequest(gerarPessoaJuridica(), gerarUsuario(), List.of(gerarModulo()));
 	}
 	
-	private PessoaJuridicaRecord gerarPessoaJuridica() {
+	private PessoaJuridicaRecordRequest gerarPessoaJuridica() {
 		
-		return new PessoaJuridicaRecord("TESTE NOME FANTASIA", "21240122000125", "razaoSocial JUNIT", 400L);
+		return new PessoaJuridicaRecordRequest("TESTE NOME FANTASIA", "21240122000125", "razaoSocial JUNIT", 400L);
 	}
 	
-	private UsuarioRecord gerarUsuario() {
+	private UsuarioRecordRequest gerarUsuario() {
 		
-		return new UsuarioRecord("97092797004", 700L, "jonas silva", "teste@junit.com.br", "123456789", "123456");
+		return new UsuarioRecordRequest("97092797004", 700L, "jonas silva", "teste@junit.com.br", "123456789", "123456");
 	}
 	
 	private ModuloRequest gerarModulo() {

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import br.com.app.conatus.entities.ModuloEntity;
 
 @Repository
-public interface ModuloRepository extends JpaRepository<ModuloEntity, Long>{
+public interface ModuloRepository extends JpaRepository<ModuloEntity, Long> {
+	
 
 }
