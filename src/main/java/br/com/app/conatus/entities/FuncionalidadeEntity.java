@@ -34,8 +34,8 @@ public class FuncionalidadeEntity {
 	private String descricao;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ID_DOM_MODULO")
-	private DominioEntity modulo;
+	@JoinColumn(name = "ID_MODULO")
+	private ModuloEntity modulo;
 		
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_DOM_TIPO")

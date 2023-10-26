@@ -31,10 +31,10 @@ import br.com.app.conatus.entities.factory.VinculoFuncionarioEntityFactory;
 import br.com.app.conatus.enums.CodigoDominio;
 import br.com.app.conatus.infra.exceptions.MsgException;
 import br.com.app.conatus.infra.exceptions.NaoEncontradoException;
-import br.com.app.conatus.model.PessoaJuridicaRecord;
-import br.com.app.conatus.model.UsuarioRecord;
 import br.com.app.conatus.model.request.FuncionalidadeRequest;
+import br.com.app.conatus.model.request.PessoaJuridicaRecordRequest;
 import br.com.app.conatus.model.request.SolicitacaoCadastroTenantRequest;
+import br.com.app.conatus.model.request.UsuarioRecordRequest;
 import br.com.app.conatus.repositories.FuncionalidadeCustomizadaRepository;
 import br.com.app.conatus.repositories.FuncionalidadeRepository;
 import br.com.app.conatus.repositories.ModuloRepository;
@@ -121,7 +121,7 @@ public class TenantService {
 			
 			FuncionalidadeEntity func = recuperarFuncionalidadePorId(funcRequest.idFuncionalidade());
 			
-			if (!func.getModulo().getCodigo().equals(tenantModulo.getModulo().getTipoModulo().getCodigo())) {
+			if (func.getModulo().getTipoModulo().getCodigo().equals(tenantModulo.getModulo().getTipoModulo().getCodigo())) {
 				throw new MsgException(String.format("Funcionalidade informada para o modulo %s é invalida", tenantModulo.getModulo().getTipoModulo().getDescricao()));
 			}
 			
@@ -169,13 +169,13 @@ public class TenantService {
 		verificarPessoaFisica(solicitacaoTenant.usuario());
 	}
 
-	private void verificarPessoaFisica(UsuarioRecord usuario) {
+	private void verificarPessoaFisica(UsuarioRecordRequest usuario) {
 		if (pessoaFisicaRepository.existsByCpf(usuario.cpf())) {
 			throw new MsgException("Usuário informado já possui cadastro");
 		}
 	}
 
-	private void verificarPessoaJuridica(PessoaJuridicaRecord pessoaJuridica) {
+	private void verificarPessoaJuridica(PessoaJuridicaRecordRequest pessoaJuridica) {
 		if (pessoaJuridicaRepository.existsByCnpj(pessoaJuridica.cnpj())) {
 			throw new MsgException("Pessoa juridica informada já possui cadastro");
 		}

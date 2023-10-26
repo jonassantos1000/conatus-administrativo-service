@@ -1,3 +1,4 @@
+
 --SITUAÇÃO DE CADASTRO
 
 insert into tb_tipo_dominio (IDENT, DS_TIPO, DT_CADASTRO, COD_TIPO_DOMINIO)
@@ -44,13 +45,16 @@ insert into tb_tipo_dominio (IDENT, DS_TIPO, DT_CADASTRO, COD_TIPO_DOMINIO)
 values (3, 'Tipos de modulos', '2023-10-13', 'TIPOS_MODULOS');
 
 insert into tb_dominio (IDENT, DOMINIO, ID_DOM_SITUACAO, ID_TIPO, DT_CADASTRO, COD_DOMINIO)
-values (300, 'ESTOQUE', 1, 3, '2023-10-22', 'MODULO_ESTOQUE');
+values (300, 'Estoque', 1, 3, '2023-10-22', 'MODULO_ESTOQUE');
 
 insert into tb_dominio (IDENT, DOMINIO, ID_DOM_SITUACAO, ID_TIPO, DT_CADASTRO, COD_DOMINIO)
-values (301, 'VENDAS', 1, 3, '2023-10-22', 'MODULO_VENDAS');
+values (301, 'Vendas', 1, 3, '2023-10-22', 'MODULO_VENDAS');
 
 insert into tb_dominio (IDENT, DOMINIO, ID_DOM_SITUACAO, ID_TIPO, DT_CADASTRO, COD_DOMINIO)
-values (302, 'CLIENTES', 1, 3, '2023-10-22', 'MODULO_CLIENTES');
+values (302, 'Clientes', 1, 3, '2023-10-22', 'MODULO_CLIENTES');
+
+insert into tb_dominio (IDENT, DOMINIO, ID_DOM_SITUACAO, ID_TIPO, DT_CADASTRO, COD_DOMINIO)
+values (303, 'Produtos', 1, 3, '2023-10-22', 'MODULO_PRODUTOS');
 
 --RAMOS DE ATIVIDADE
 
@@ -107,10 +111,10 @@ insert into tb_tipo_dominio (IDENT, DS_TIPO, DT_CADASTRO, COD_TIPO_DOMINIO)
 values (6, 'Tipos de funcionalidades', '2023-10-22', 'TIPO_FUNC');
 
 insert into tb_dominio (IDENT, DOMINIO, ID_DOM_SITUACAO, ID_TIPO, DT_CADASTRO, COD_DOMINIO)
-values (600, 'Funcionalidade padrão', 1, 6, '2023-10-22', 'FUNC_PADRAO');
+values (600, 'Padrão', 1, 6, '2023-10-22', 'FUNC_PADRAO');
 
 insert into tb_dominio (IDENT, DOMINIO, ID_DOM_SITUACAO, ID_TIPO, DT_CADASTRO, COD_DOMINIO)
-values (601, 'Funcionalidade premium', 1, 6, '2023-10-22', 'FUNC_PREMIUM');
+values (601, 'Premium', 1, 6, '2023-10-22', 'FUNC_PREMIUM');
 
 -- TIPOS DE GENEROS
 
@@ -132,15 +136,54 @@ values (703, 'Prefere não informar', 1, 7, '2023-10-22', 'GENERO_NAO_INFORMAR')
 -- TABELA MODULOS
 
 insert into tb_modulo (IDENT, VL_BASE, ID_DOM_SITUACAO, ID_DOM_TIPO, DS_MODULO) 
-VALUES (1, 150.0, 1, 300, 'Modulo estoque - padrão');
+VALUES (1, 150.0, 1, 300, 'Estoque');
+
+insert into tb_modulo (IDENT, VL_BASE, ID_DOM_SITUACAO, ID_DOM_TIPO, DS_MODULO) 
+VALUES (2, 250.0, 1, 301, 'Vendas');
+
+insert into tb_modulo (IDENT, VL_BASE, ID_DOM_SITUACAO, ID_DOM_TIPO, DS_MODULO) 
+VALUES (4, 60.0, 1, 302, 'Clientes');
+
+insert into tb_modulo (IDENT, VL_BASE, ID_DOM_SITUACAO, ID_DOM_TIPO, DS_MODULO) 
+VALUES (3, 50.0, 1, 303, 'Produtos');
 
 -- TABELA DE FUNCIONALIDADES
 
-insert into tb_funcionalidade (IDENT, VL_FUNCIONALIDADE, ID_DOM_MODULO, ID_DOM_TIPO, DS_DESCRICAO) 
-VALUES (1, 15.0, 300, 600, 'Consultar níveis de estoque');
+insert into tb_funcionalidade (IDENT, VL_FUNCIONALIDADE, ID_MODULO, ID_DOM_TIPO, DS_DESCRICAO) 
+VALUES (1, 15.0, 1, 600, 'Consultar níveis de estoque');
 
-insert into tb_funcionalidade (IDENT, VL_FUNCIONALIDADE, ID_DOM_MODULO, ID_DOM_TIPO, DS_DESCRICAO) 
-VALUES (2, 30.0, 300, 601, 'Consultar previsão de demanda'); 
+insert into tb_funcionalidade (IDENT, VL_FUNCIONALIDADE, ID_MODULO, ID_DOM_TIPO, DS_DESCRICAO) 
+VALUES (2, 30.0, 1, 601, 'Consultar previsão de demanda'); 
+
+insert into tb_funcionalidade (IDENT, VL_FUNCIONALIDADE, ID_MODULO, ID_DOM_TIPO, DS_DESCRICAO) 
+VALUES (3, 15.0, 1, 600, 'Cadastrar produto');
+
+insert into tb_funcionalidade (IDENT, VL_FUNCIONALIDADE, ID_MODULO, ID_DOM_TIPO, DS_DESCRICAO) 
+VALUES (4, 30.0, 1, 601, 'Visualizar curva ABC'); 
+
+insert into tb_funcionalidade (IDENT, VL_FUNCIONALIDADE, ID_MODULO, ID_DOM_TIPO, DS_DESCRICAO) 
+VALUES (5, 15.0, 2, 600, 'Consultar vendas');
+
+insert into tb_funcionalidade (IDENT, VL_FUNCIONALIDADE, ID_MODULO, ID_DOM_TIPO, DS_DESCRICAO) 
+VALUES (6, 30.0, 2, 601, 'Consultar vendas por funcionario'); 
+
+insert into tb_funcionalidade (IDENT, VL_FUNCIONALIDADE, ID_MODULO, ID_DOM_TIPO, DS_DESCRICAO) 
+VALUES (7, 15.0, 2, 600, 'Consultar vendas por mês');
+
+insert into tb_funcionalidade (IDENT, VL_FUNCIONALIDADE, ID_MODULO, ID_DOM_TIPO, DS_DESCRICAO) 
+VALUES (8, 30.0, 2, 601, 'Consultar vendas por ano'); 
+
+insert into tb_funcionalidade (IDENT, VL_FUNCIONALIDADE, ID_MODULO, ID_DOM_TIPO, DS_DESCRICAO) 
+VALUES (9, 15.0, 4, 600, 'Consultar clientes');
+
+insert into tb_funcionalidade (IDENT, VL_FUNCIONALIDADE, ID_MODULO, ID_DOM_TIPO, DS_DESCRICAO) 
+VALUES (10, 30.0, 4, 600, 'Cadastrar clientes'); 
+
+insert into tb_funcionalidade (IDENT, VL_FUNCIONALIDADE, ID_MODULO, ID_DOM_TIPO, DS_DESCRICAO) 
+VALUES (11, 15.0, 4, 600, 'Alterar clientes');
+
+insert into tb_funcionalidade (IDENT, VL_FUNCIONALIDADE, ID_MODULO, ID_DOM_TIPO, DS_DESCRICAO) 
+VALUES (12, 30.0, 4, 601, 'Enviar notificação por e-mail para clientes');
 
 -- TABELA VINCULO MODULO X FUNCIONALIDADE
 insert into tb_modulo_func (IDENT, id_dom_situacao, id_funcionalidade, id_modulo) 

@@ -24,7 +24,7 @@ import lombok.Setter;
 @Table(name = "TB_MODULO_FUNC")
 @Builder @AllArgsConstructor @NoArgsConstructor
 @Setter @Getter @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class ModuloFuncionalidadeEntity {
+public class ModuloFuncionalidadePadraoEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

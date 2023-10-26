@@ -3,13 +3,13 @@ package br.com.app.conatus.entities.factory;
 import br.com.app.conatus.entities.DominioEntity;
 import br.com.app.conatus.entities.PessoaJuridicaEntity;
 import br.com.app.conatus.enums.TipoPessoaEnum;
-import br.com.app.conatus.model.PessoaJuridicaRecord;
+import br.com.app.conatus.model.request.PessoaJuridicaRecordRequest;
 
 public class PessoaJuridicaEntityFactory {
 
 	private PessoaJuridicaEntityFactory() {}
 	
-	public static PessoaJuridicaEntity converterRecordParaEntity(PessoaJuridicaRecord pj, DominioEntity ramoAtividade, DominioEntity situacao) {
+	public static PessoaJuridicaEntity converterRecordParaEntity(PessoaJuridicaRecordRequest pj, DominioEntity ramoAtividade, DominioEntity situacao) {
 		return PessoaJuridicaEntity.builder()
 				.ramoAtividade(ramoAtividade)
 				.situacao(situacao)
