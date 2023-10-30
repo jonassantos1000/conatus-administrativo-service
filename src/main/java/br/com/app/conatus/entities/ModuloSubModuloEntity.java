@@ -21,30 +21,30 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "TB_MODULO_FUNC")
+@Table(name = "tb_modulo_sub_modulo")
 @Builder @AllArgsConstructor @NoArgsConstructor
 @Setter @Getter @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class ModuloFuncionalidadePadraoEntity {
+public class ModuloSubModuloEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "IDENT")
 	private Long id;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne()
 	@JoinColumn(name = "ID_MODULO")
 	private ModuloEntity modulo;
 	
+	@ManyToOne()
+	@JoinColumn(name = "ID_SUB_MODULO")
+	private ModuloEntity subModulo;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ID_FUNCIONALIDADE")
-	private FuncionalidadeEntity funcionalidade;
+	@JoinColumn(name = "ID_DOM_SITUACAO")
+	private DominioEntity situacao;
 	
 	@UpdateTimestamp
 	@Column(name = "DT_ATUALIZACAO")
 	private ZonedDateTime dataAtualizacao;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ID_DOM_SITUACAO")
-	private DominioEntity situacao;
-
 }

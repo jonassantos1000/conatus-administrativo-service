@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import br.com.app.conatus.entities.DominioEntity;
-import br.com.app.conatus.entities.FuncionalidadeCustomizadaEntity;
+import br.com.app.conatus.entities.TenantModuloFuncCustomEntity;
 import br.com.app.conatus.entities.FuncionalidadeEntity;
 import br.com.app.conatus.entities.ModuloEntity;
 import br.com.app.conatus.entities.MovimentacaoModuloEntity;
@@ -102,7 +102,7 @@ public class TenantService {
 			
 			TenantModuloEntity moduloTenant = tenantModuloRepository.save(TenantModuloEntityFactory.converterParaEntity(modulo, tenant, situacaoAtiva, LocalDateTime.now().plusDays(7L), isPossuiFuncionalidadePremium));
 			
-			salvarMovimentacao(moduloTenant, transacao, modulo.getValorBase(),
+			salvarMovimentacao(moduloTenant, transacao, modulo.getValorUnitario(),
 							dominioService.recuperarPorCodigo(CodigoDominio.MOVIM_CONTRATACAO_MODULO));	
 
 			if (isPossuiFuncionalidadePremium) {
@@ -129,7 +129,7 @@ public class TenantService {
 				throw new MsgException(String.format("Funcionalidade %d informada para o modulo %s não é considerada premium", funcRequest.idFuncionalidade(), tenantModulo.getModulo().getTipoModulo().getDescricao()));
 			}
 			
-			FuncionalidadeCustomizadaEntity funcCustom = funcionalidadeCustomizadaRepository.save(FuncionalidadeCustomizadaEntityFactory
+			TenantModuloFuncCustomEntity funcCustom = funcionalidadeCustomizadaRepository.save(FuncionalidadeCustomizadaEntityFactory
 					.converterParaEntity(tenantModulo, func, 
 							situacaoAtivo,
 							LocalDateTime.now().plusDays(7L)));
@@ -139,7 +139,7 @@ public class TenantService {
 		});
 	}
 	
-	private MovimentacaoModuloEntity salvarMovimentacao(TenantModuloEntity moduloTenant, TransacaoEntity transacao, BigDecimal valorMovim, DominioEntity tipoMovim, FuncionalidadeCustomizadaEntity funcCustom) {
+	private MovimentacaoModuloEntity salvarMovimentacao(TenantModuloEntity moduloTenant, TransacaoEntity transacao, BigDecimal valorMovim, DominioEntity tipoMovim, TenantModuloFuncCustomEntity funcCustom) {
 		totalizarTransacao(transacao, valorMovim);
 		
 		return movimentacaoModuloRepository.save(MovimentacaoModuloEntityFactory

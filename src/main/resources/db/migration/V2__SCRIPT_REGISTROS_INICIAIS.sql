@@ -133,19 +133,34 @@ values (702, 'Não binário', 1, 7, '2023-10-22', 'GENERO_NAO_BINARIO');
 insert into tb_dominio (IDENT, DOMINIO, ID_DOM_SITUACAO, ID_TIPO, DT_CADASTRO, COD_DOMINIO)
 values (703, 'Prefere não informar', 1, 7, '2023-10-22', 'GENERO_NAO_INFORMAR');
 
+
+-- TABELA SERVIÇOS
+
+insert into tb_servico (VL_UNIT, ID_DOM_SITUACAO, ID_DOM_TIPO, DS_SERVICO) 
+VALUES (150.0, 1, 300, 'Modulo Estoque');
+
+insert into tb_servico (VL_UNIT, ID_DOM_SITUACAO, ID_DOM_TIPO, DS_SERVICO) 
+VALUES (250.0, 1, 301, 'Modulo Vendas');
+
+insert into tb_servico (VL_UNIT, ID_DOM_SITUACAO, ID_DOM_TIPO, DS_SERVICO) 
+VALUES (60.0, 1, 302, 'Modulo Clientes');
+
+insert into tb_servico (VL_UNIT, ID_DOM_SITUACAO, ID_DOM_TIPO, DS_SERVICO) 
+VALUES (50.0, 1, 303, 'Modulo Produtos');
+
 -- TABELA MODULOS
 
-insert into tb_modulo (IDENT, VL_BASE, ID_DOM_SITUACAO, ID_DOM_TIPO, DS_MODULO) 
-VALUES (1, 150.0, 1, 300, 'Estoque');
+insert into tb_modulo (ID_SERVICO, ID_DOM_MODULO, NM_MODULO) 
+VALUES (1, 300, 'Estoque');
 
-insert into tb_modulo (IDENT, VL_BASE, ID_DOM_SITUACAO, ID_DOM_TIPO, DS_MODULO) 
-VALUES (2, 250.0, 1, 301, 'Vendas');
+insert into tb_modulo (ID_SERVICO, ID_DOM_MODULO, NM_MODULO) 
+VALUES (2, 301, 'Vendas');
 
-insert into tb_modulo (IDENT, VL_BASE, ID_DOM_SITUACAO, ID_DOM_TIPO, DS_MODULO) 
-VALUES (4, 60.0, 1, 302, 'Clientes');
+insert into tb_modulo (ID_SERVICO, ID_DOM_MODULO, NM_MODULO) 
+VALUES (4, 302, 'Clientes');
 
-insert into tb_modulo (IDENT, VL_BASE, ID_DOM_SITUACAO, ID_DOM_TIPO, DS_MODULO) 
-VALUES (3, 50.0, 1, 303, 'Produtos');
+insert into tb_modulo (ID_SERVICO, ID_DOM_MODULO, NM_MODULO) 
+VALUES (3, 303, 'Produtos');
 
 -- TABELA DE FUNCIONALIDADES
 
@@ -185,6 +200,25 @@ VALUES (11, 15.0, 4, 600, 'Alterar clientes');
 insert into tb_funcionalidade (IDENT, VL_FUNCIONALIDADE, ID_MODULO, ID_DOM_TIPO, DS_DESCRICAO) 
 VALUES (12, 30.0, 4, 601, 'Enviar notificação por e-mail para clientes');
 
--- TABELA VINCULO MODULO X FUNCIONALIDADE
-insert into tb_modulo_func (IDENT, id_dom_situacao, id_funcionalidade, id_modulo) 
-values (1, 1, 1, 1);
+insert into tb_funcionalidade (IDENT, VL_FUNCIONALIDADE, ID_MODULO, ID_DOM_TIPO, DS_DESCRICAO) 
+VALUES (13, 30.0, 3, 600, 'Alterar produtos');
+
+insert into tb_funcionalidade (IDENT, VL_FUNCIONALIDADE, ID_MODULO, ID_DOM_TIPO, DS_DESCRICAO) 
+VALUES (14, 50.0, 3, 601, 'Importar produtos de planilha excel');
+
+
+-- submodulos
+
+INSERT INTO public.tb_modulo_sub_modulo
+(ident, id_modulo, id_sub_modulo, dt_atualizacao, id_dom_situacao)
+VALUES(1, 1, 3, NULL, 1);
+INSERT INTO public.tb_modulo_sub_modulo
+(ident, id_modulo, id_sub_modulo, dt_atualizacao, id_dom_situacao)
+VALUES(3, 1, 2, NULL, NULL);
+INSERT INTO public.tb_modulo_sub_modulo
+(ident, id_modulo, id_sub_modulo, dt_atualizacao, id_dom_situacao)
+VALUES(4, 4, NULL, NULL, 1);
+INSERT INTO public.tb_modulo_sub_modulo
+(ident, id_modulo, id_sub_modulo, dt_atualizacao, id_dom_situacao)
+VALUES(2, 3, 4, NULL, 1);
+
