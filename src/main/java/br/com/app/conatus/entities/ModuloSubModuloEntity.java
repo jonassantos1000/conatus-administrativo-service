@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "tb_modulo_sub_modulo")
+@Table(name = "TB_MODULO_SUB_MODULO")
 @Builder @AllArgsConstructor @NoArgsConstructor
 @Setter @Getter @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class ModuloSubModuloEntity {
@@ -31,11 +31,11 @@ public class ModuloSubModuloEntity {
 	@Column(name = "IDENT")
 	private Long id;
 	
-	@ManyToOne()
+	@ManyToOne
 	@JoinColumn(name = "ID_MODULO")
 	private ModuloEntity modulo;
 	
-	@ManyToOne()
+	@ManyToOne
 	@JoinColumn(name = "ID_SUB_MODULO")
 	private ModuloEntity subModulo;
 	
