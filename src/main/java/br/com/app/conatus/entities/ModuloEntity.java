@@ -1,56 +1,41 @@
 package br.com.app.conatus.entities;
 
-import java.math.BigDecimal;
-import java.time.ZonedDateTime;
 import java.util.List;
-
-import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.EqualsAndHashCode.Include;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Table(name = "TB_MODULO")
-@Builder @AllArgsConstructor @NoArgsConstructor
-@Setter @Getter @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class ModuloEntity {
-	
-	@Id @Include
-	@Column(name = "IDENT")
-	private Long id;
-	
-	@Column(name = "DS_MODULO")
+@PrimaryKeyJoinColumn(name="ID_SERVICO")
+@SuperBuilder @Setter @Getter 
+@AllArgsConstructor @NoArgsConstructor
+public class ModuloEntity extends ServicoEntity {
+
+	private static final long serialVersionUID = 1L;
+
+	@Column(name = "NM_MODULO")
 	private String descricao;
 	
-	@Column(name = "VL_BASE")
-	private BigDecimal valorBase;
-	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ID_DOM_SITUACAO")
-	private DominioEntity situacao;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ID_DOM_TIPO")
+	@JoinColumn(name = "ID_DOM_MODULO")
 	private DominioEntity tipoModulo;
-	
-	@UpdateTimestamp
-	@Column(name = "DT_ATUALIZACAO")
-	private ZonedDateTime dataAtualizacao;
 	
 	@OneToMany(mappedBy = "modulo")
 	private List<FuncionalidadeEntity> funcionalidades;
+	
+	@OneToMany(mappedBy = "modulo")
+	private List<ModuloSubModuloEntity> moduloSubModulos;
 
 }

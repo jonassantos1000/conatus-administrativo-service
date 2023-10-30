@@ -22,10 +22,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "TB_FUNC_CUSTOM")
+@Table(name = "TB_TENANT_MODULO_FUNC_CUSTOM")
 @Builder @AllArgsConstructor @NoArgsConstructor
 @Setter @Getter @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class FuncionalidadeCustomizadaEntity {
+public class TenantModuloFuncCustomEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -10,6 +10,7 @@ public record ModuloRecordResponse(
 		Long id,
 		String descricao,
 		List<FuncionalidadeResponse> funcionalidades,
-		BigDecimal valor
+		BigDecimal valor,
+		List<ModuloRecordResponse> subModulos
 		) {
 }
