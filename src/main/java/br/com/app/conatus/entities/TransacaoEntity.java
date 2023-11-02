@@ -2,10 +2,12 @@ package br.com.app.conatus.entities;
 
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
+import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.TenantId;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -14,6 +16,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -53,5 +56,8 @@ public class TransacaoEntity {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_TENANT", referencedColumnName = "CD_TENANT")
 	private TenantEntity tenant;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "transacao")
+	private List<MovimentacaoEntity> movimentacoes;
 
 }

@@ -2,8 +2,6 @@ package br.com.app.conatus.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.List;
-
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -15,7 +13,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
 
-import br.com.app.conatus.model.request.ModuloRequest;
 import br.com.app.conatus.model.request.PessoaJuridicaRecordRequest;
 import br.com.app.conatus.model.request.SolicitacaoCadastroTenantRequest;
 import br.com.app.conatus.model.request.UsuarioRecordRequest;
@@ -56,7 +53,7 @@ class TenantControllerTest extends AbstractControllerTest{
 	}
 
 	private SolicitacaoCadastroTenantRequest gerarSolicitacaoTenant() {
-		return new SolicitacaoCadastroTenantRequest(gerarPessoaJuridica(), gerarUsuario(), List.of(gerarModulo()));
+		return new SolicitacaoCadastroTenantRequest(gerarPessoaJuridica(), gerarUsuario());
 	}
 	
 	private PessoaJuridicaRecordRequest gerarPessoaJuridica() {
@@ -67,10 +64,6 @@ class TenantControllerTest extends AbstractControllerTest{
 	private UsuarioRecordRequest gerarUsuario() {
 		
 		return new UsuarioRecordRequest("97092797004", 700L, "jonas silva", "teste@junit.com.br", "123456789", "123456");
-	}
-	
-	private ModuloRequest gerarModulo() {
-		return new ModuloRequest(1L, List.of());
 	}
 
 }

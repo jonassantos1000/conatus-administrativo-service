@@ -39,6 +39,15 @@ public class TenantEntity {
 	@Column(name = "DS_NOME")
 	private String nome;
 	
+	@Column(name = "DT_INICIO_AMOSTRA_GRATIS")
+	private ZonedDateTime dataInicioAmostraGratis;
+	
+	@Column(name = "DT_FIM_AMOSTRA_GRATIS")
+	private ZonedDateTime dataFimAmostraGratis;
+	
+	@Column(name = "QT_USUARIO")
+	private Integer quantidadeUsuarios;
+	
 	@CreationTimestamp
 	@Column(name = "DT_CADASTRO")
 	private ZonedDateTime dataCadastro;

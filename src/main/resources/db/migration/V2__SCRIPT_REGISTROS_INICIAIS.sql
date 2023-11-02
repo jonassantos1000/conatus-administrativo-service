@@ -105,6 +105,9 @@ values (505, 'Registro de novo funcionario', 1, 5, '2023-10-22', 'MOVIM_REGISTRO
 insert into tb_dominio (IDENT, DOMINIO, ID_DOM_SITUACAO, ID_TIPO, DT_CADASTRO, COD_DOMINIO)
 values (506, 'Remoção de funcionario', 1, 5, '2023-10-22', 'MOVIM_REMOCAO_FUNCIONARIO');
 
+insert into tb_dominio (IDENT, DOMINIO, ID_DOM_SITUACAO, ID_TIPO, DT_CADASTRO, COD_DOMINIO)
+values (507, 'Ativação de amostra gratis', 1, 5, '2023-10-22', 'MOVIM_ATIVACAO_AMOSTRA_GRATIS');
+
 -- TIPOS DE FUNCIONALIDADES
 
 insert into tb_tipo_dominio (IDENT, DS_TIPO, DT_CADASTRO, COD_TIPO_DOMINIO) 

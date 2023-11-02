@@ -51,7 +51,7 @@ public class MovimentacaoEntity implements Serializable{
 	private DominioEntity tipo;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ID_TRANSACAO")
+	@JoinColumn(name = "ID_TRANSACAO", referencedColumnName = "IDENT")
 	private TransacaoEntity transacao;
 	
 	@CreationTimestamp
