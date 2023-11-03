@@ -23,7 +23,7 @@ import br.com.app.conatus.model.request.UsuarioRecordRequest;
 @TestMethodOrder(OrderAnnotation.class)
 class TenantControllerTest extends AbstractControllerTest{
 	
-	private static final String RESOURCE = "/tenant";
+	private static final String RESOURCE = "/tenants";
 	private static StringBuilder path = new StringBuilder(RESOURCE);
 	
 	@Test
