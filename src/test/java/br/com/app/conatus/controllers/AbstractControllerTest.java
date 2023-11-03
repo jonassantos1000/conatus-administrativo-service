@@ -1,4 +1,4 @@
-package br.com.app.conatus.controller;
+package br.com.app.conatus.controllers;
 
 import java.util.UUID;
 

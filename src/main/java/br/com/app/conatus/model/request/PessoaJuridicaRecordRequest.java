@@ -13,7 +13,7 @@ public record PessoaJuridicaRecordRequest(
 		@NotBlank(message = "O campo razaoSocial é obrigatorio")
 		String razaoSocial,
 		
-		@CNPJ
+		@CNPJ(message = "O CNPJ informado é invalido")
 		String cnpj,
 		
 		@NotNull(message = "O campo idRamoAtividade é obrigatorio")

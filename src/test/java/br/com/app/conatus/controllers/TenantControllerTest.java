@@ -1,7 +1,8 @@
-package br.com.app.conatus.controller;
+package br.com.app.conatus.controllers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,8 @@ import br.com.app.conatus.model.request.UsuarioRecordRequest;
 @TestMethodOrder(OrderAnnotation.class)
 class TenantControllerTest extends AbstractControllerTest{
 	
-	private static StringBuilder path = new StringBuilder("/tenant");
+	private static final String RESOURCE = "/tenant";
+	private static StringBuilder path = new StringBuilder(RESOURCE);
 	
 	@Test
 	@Order(1)
@@ -31,7 +33,9 @@ class TenantControllerTest extends AbstractControllerTest{
 		SolicitacaoCadastroTenantRequest solicitacaoTenant = gerarSolicitacaoTenant();
 
 		var respostaRequisicao = restTemplate.exchange(path.toString(), HttpMethod.POST,
-				new HttpEntity<>(solicitacaoTenant, getHeader()), solicitacaoTenant.getClass());
+				new HttpEntity<>(solicitacaoTenant, getHeader()), Void.class);
+		
+		System.out.println(respostaRequisicao.getBody());
 
 		assertEquals(HttpStatus.CREATED, respostaRequisicao.getStatusCode());
 		
@@ -45,8 +49,6 @@ class TenantControllerTest extends AbstractControllerTest{
 
 		var respostaRequisicao = restTemplate.exchange(path.toString(), HttpMethod.POST,
 				new HttpEntity<>(solicitacaoTenant, getHeader()), solicitacaoTenant.getClass());
-
-		System.out.println(respostaRequisicao.getBody());
 		
 		assertEquals(HttpStatus.BAD_REQUEST, respostaRequisicao.getStatusCode());
 		
@@ -58,12 +60,18 @@ class TenantControllerTest extends AbstractControllerTest{
 	
 	private PessoaJuridicaRecordRequest gerarPessoaJuridica() {
 		
-		return new PessoaJuridicaRecordRequest("TESTE NOME FANTASIA", "21240122000125", "razaoSocial JUNIT", 400L);
+		return new PessoaJuridicaRecordRequest("TESTE NOME FANTASIA", "razaoSocial JUNIT", "37039861000193", 4L);
 	}
 	
 	private UsuarioRecordRequest gerarUsuario() {
 		
-		return new UsuarioRecordRequest("97092797004", 700L, "jonas silva", "teste@junit.com.br", "123456789", "123456");
+		return new UsuarioRecordRequest("51494893010", 1L, "jonas silva", "teste@junit.com.br", "123456789", "123456");
+	}
+	
+	@BeforeEach
+	void inicializar() {
+		path.setLength(0);
+		path.append(RESOURCE);
 	}
 
 }
