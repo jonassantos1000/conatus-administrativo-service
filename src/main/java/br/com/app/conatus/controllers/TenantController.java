@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/tenant")
+@RequestMapping("/tenants")
 @RequiredArgsConstructor
 public class TenantController {
 	
