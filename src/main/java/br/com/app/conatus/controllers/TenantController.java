@@ -1,6 +1,7 @@
 package br.com.app.conatus.controllers;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,9 +13,9 @@ import br.com.app.conatus.service.TenantService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
-
+@CrossOrigin
 @RestController
-@RequestMapping("/tenant")
+@RequestMapping("/tenants")
 @RequiredArgsConstructor
 public class TenantController {
 	

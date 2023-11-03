@@ -1,6 +1,7 @@
-package br.com.app.conatus.controller;
+package br.com.app.conatus.controllers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.util.List;
 
@@ -17,38 +18,38 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
 
-import br.com.app.conatus.enums.CodigoDominio;
-import br.com.app.conatus.model.response.DominioResponse;
+import br.com.app.conatus.model.response.ModuloRecordResponse;
 
 @SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
 @ActiveProfiles("test")
 @TestMethodOrder(OrderAnnotation.class)
-class DominioControllerTest extends AbstractControllerTest{
+class ModuloControllerTest extends AbstractControllerTest{
 	
-	private static final String RESOURCE = "/dominios";
+	private static final String RESOURCE = "/modulos";
 	private static StringBuilder path = new StringBuilder();
 	
 	@Test
 	@Order(1)
-	void esperaBuscarDominioPorCodigo() {
+	void esperaBuscarModulos() {
 		
-		path.append("/codigos/").append(CodigoDominio.STATUS_ATIVO);
+		ParameterizedTypeReference<List<ModuloRecordResponse>> responseType = new ParameterizedTypeReference<>() {
+		};
 
 		var respostaRequisicao = restTemplate.exchange(path.toString(), HttpMethod.GET,
-				new HttpEntity<>(getHeader()), DominioResponse.class);
+				new HttpEntity<>(getHeader()), responseType);
 
 		assertEquals(HttpStatus.OK, respostaRequisicao.getStatusCode());
-		
+		assertFalse(respostaRequisicao.getBody().isEmpty());
 	}
 	
 	@Test
 	@Order(2)
-	void esperaBuscarDominioPorId() {
+	void esperaBuscarModuloPorId() {
 		
 		path.append("/").append(1L);
 
 		var respostaRequisicao = restTemplate.exchange(path.toString(), HttpMethod.GET,
-				new HttpEntity<>(getHeader()), DominioResponse.class);
+				new HttpEntity<>(getHeader()), ModuloRecordResponse.class);
 
 		assertEquals(HttpStatus.OK, respostaRequisicao.getStatusCode());
 		
@@ -56,33 +57,14 @@ class DominioControllerTest extends AbstractControllerTest{
 	
 	@Test
 	@Order(3)
-	void esperaBuscarDominioPorIdTipo() {
+	void esperaNaoEncontrarModuloPorIdInexistente() {
 		
-		path.append("/tipos-id/").append(1L);
+		path.append("/").append(0L);
 		
-		ParameterizedTypeReference<List<DominioResponse>> responseType = new ParameterizedTypeReference<>() {
-		};
-
 		var respostaRequisicao = restTemplate.exchange(path.toString(), HttpMethod.GET,
-				new HttpEntity<>(getHeader()), responseType);
+				new HttpEntity<>(getHeader()), ModuloRecordResponse.class);
 
-		assertEquals(HttpStatus.OK, respostaRequisicao.getStatusCode());
-		
-	}
-	
-	@Test
-	@Order(4)
-	void esperaBuscarDominioPorCodigoTipo() {
-		
-		path.append("/tipos-codigos/").append("CARGOS");
-		
-		ParameterizedTypeReference<List<DominioResponse>> responseType = new ParameterizedTypeReference<List<DominioResponse>>() {
-		};
-
-		var respostaRequisicao = restTemplate.exchange(path.toString(), HttpMethod.GET,
-				new HttpEntity<>(getHeader()), responseType);
-
-		assertEquals(HttpStatus.OK, respostaRequisicao.getStatusCode());
+		assertEquals(HttpStatus.NOT_FOUND, respostaRequisicao.getStatusCode());
 		
 	}
 	

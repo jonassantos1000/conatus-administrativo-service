@@ -1,7 +1,9 @@
 package br.com.app.conatus.entities.factory;
 
+import java.time.ZonedDateTime;
 import java.util.UUID;
 
+import br.com.app.conatus.constantes.Constante;
 import br.com.app.conatus.entities.PessoaJuridicaEntity;
 import br.com.app.conatus.entities.TenantEntity;
 
@@ -12,6 +14,9 @@ public class TenantEntityFactory {
 		return TenantEntity.builder()
 				.nome(pj.getNome())
 				.pessoaJuridica(pj)
+				.quantidadeUsuarios(1)
+				.dataInicioAmostraGratis(ZonedDateTime.now(Constante.ZONE_SP))
+				.dataFimAmostraGratis(ZonedDateTime.now(Constante.ZONE_SP).plusDays(7))
 				.codigoTenant(UUID.randomUUID().toString())
 				.build();
 	}

@@ -2,6 +2,7 @@ package br.com.app.conatus.controllers;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,7 @@ import br.com.app.conatus.model.response.DominioResponse;
 import br.com.app.conatus.service.DominioService;
 import lombok.RequiredArgsConstructor;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/dominios")
 @RequiredArgsConstructor

@@ -8,7 +8,7 @@ import jakarta.validation.constraints.NotNull;
 
 public record UsuarioRecordRequest(
 
-		@CPF
+		@CPF(message = "O CPF informado é invalido")
 		String cpf, 
 		
 		@NotNull(message = "O campo genero é obrigatorio")
@@ -17,7 +17,7 @@ public record UsuarioRecordRequest(
 		@NotBlank(message = "O campo nome é obrigatório")
 		String nome, 
 		
-		@Email
+		@Email(message = "O Email informado é invalido")
 		String email,
 		
 		@NotBlank(message = "O campo telefone é obrigatorio")
