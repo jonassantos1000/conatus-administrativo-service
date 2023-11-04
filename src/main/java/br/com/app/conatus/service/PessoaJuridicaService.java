@@ -36,7 +36,7 @@ public class PessoaJuridicaService {
 				dominioService.recuperarPorCodigo(CodigoDominio.STATUS_ATIVO), cargo));
 	}
 	
-	protected void verificarPessoaJuridica(String cnpj) {
+	public void verificarPessoaJuridica(String cnpj) {
 		if (pessoaJuridicaRepository.existsByCnpj(cnpj)) {
 			throw new MsgException("Usuário informado já possui cadastro");
 		}
