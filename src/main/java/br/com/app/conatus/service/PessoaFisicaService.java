@@ -25,7 +25,7 @@ public class PessoaFisicaService {
 				dominioService.recuperarPorId(dadosPessoa.idGenero()), dominioService.recuperarPorCodigo(CodigoDominio.STATUS_ATIVO)));
 	}
 	
-	protected void verificarPessoaFisica(String cpf) {
+	public void verificarPessoaFisica(String cpf) {
 		if (pessoaFisicaRepository.existsByCpf(cpf)) {
 			throw new MsgException("Usuário informado já possui cadastro");
 		}
