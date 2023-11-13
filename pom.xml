@@ -8,10 +8,10 @@
 		<version>3.1.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>br.com.app</groupId>
+	<groupId>br.com.app.conatus</groupId>
 	<artifactId>conatus</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>conatus</name>
+	<version>1.0.0</version>
+	<name>conatus-administrativo-service</name>
 	<description>arquitetura de multitenancy no conatus</description>
 	<properties>
 		<java.version>17</java.version>
@@ -72,7 +72,7 @@
 	    <dependency>
 	      <groupId>org.springframework.boot</groupId>
 	      <artifactId>spring-boot-starter-cache</artifactId>
-	    </dependency>
+	    </dependency>    
 	</dependencies>
 
 	<build>
@@ -98,6 +98,15 @@
 			        <schemas>
 			            <schema>schemaName</schema>
 			        </schemas>
+			    </configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-compiler-plugin</artifactId>
+			    <configuration>
+					<release>${java.version}</release>
+			        <target>${java.version}</target>
+			        <source>${java.version}</source>
 			    </configuration>
 			</plugin>
 		</plugins>
