@@ -17,7 +17,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
 
-import br.com.app.conatus.enums.CodigoDominio;
+import br.com.app.conatus.commons.enums.CodigoDominio;
 import br.com.app.conatus.model.response.DominioResponse;
 
 @SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)

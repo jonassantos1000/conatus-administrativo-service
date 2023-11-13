@@ -17,7 +17,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
 
-import br.com.app.conatus.infra.exceptions.ErroResponse;
+import br.com.app.conatus.commons.exceptions.ErroResponse;
 import br.com.app.conatus.model.request.PessoaJuridicaValidacaoRequest;
 
 @SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
@@ -45,7 +45,7 @@ class PessoaJuridicaControllerTest extends AbstractControllerTest {
 	
 	@Test
 	@Order(2)
-	void esperaRetornarErroNaVerificaoComCnpjInvalido() {
+	void esperaRetornarErroNaVerificacaoComCnpjInvalido() {
 		
 		path.append("/validacao-cnpj");
 		

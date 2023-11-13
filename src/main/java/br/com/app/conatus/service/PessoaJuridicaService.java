@@ -2,14 +2,14 @@ package br.com.app.conatus.service;
 
 import org.springframework.stereotype.Service;
 
-import br.com.app.conatus.entities.DominioEntity;
-import br.com.app.conatus.entities.PessoaFisicaEntity;
-import br.com.app.conatus.entities.PessoaJuridicaEntity;
-import br.com.app.conatus.entities.VinculoFuncionarioEntity;
+import br.com.app.conatus.commons.entities.DominioEntity;
+import br.com.app.conatus.commons.entities.PessoaFisicaEntity;
+import br.com.app.conatus.commons.entities.PessoaJuridicaEntity;
+import br.com.app.conatus.commons.entities.VinculoFuncionarioEntity;
+import br.com.app.conatus.commons.enums.CodigoDominio;
+import br.com.app.conatus.commons.exceptions.MsgException;
 import br.com.app.conatus.entities.factory.PessoaJuridicaEntityFactory;
 import br.com.app.conatus.entities.factory.VinculoFuncionarioEntityFactory;
-import br.com.app.conatus.enums.CodigoDominio;
-import br.com.app.conatus.infra.exceptions.MsgException;
 import br.com.app.conatus.model.request.PessoaJuridicaRecordRequest;
 import br.com.app.conatus.repositories.PessoaJuridicaRepository;
 import br.com.app.conatus.repositories.VinculoFuncionarioRepository;

@@ -4,12 +4,12 @@ import java.math.BigDecimal;
 
 import org.springframework.stereotype.Service;
 
-import br.com.app.conatus.entities.MovimentacaoEntity;
-import br.com.app.conatus.entities.PessoaFisicaEntity;
-import br.com.app.conatus.entities.TenantEntity;
-import br.com.app.conatus.entities.TransacaoEntity;
+import br.com.app.conatus.commons.entities.MovimentacaoEntity;
+import br.com.app.conatus.commons.entities.PessoaFisicaEntity;
+import br.com.app.conatus.commons.entities.TenantEntity;
+import br.com.app.conatus.commons.entities.TransacaoEntity;
+import br.com.app.conatus.commons.enums.CodigoDominio;
 import br.com.app.conatus.entities.factory.MovimentacaoEntityFactory;
-import br.com.app.conatus.enums.CodigoDominio;
 import br.com.app.conatus.repositories.MovimentacaoRepository;
 import lombok.RequiredArgsConstructor;
 

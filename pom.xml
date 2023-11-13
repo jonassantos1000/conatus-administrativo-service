@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.app.conatus</groupId>
-	<artifactId>conatus</artifactId>
+	<artifactId>conatus-administrativo-service</artifactId>
 	<version>1.0.0</version>
 	<name>conatus-administrativo-service</name>
 	<description>arquitetura de multitenancy no conatus</description>
@@ -18,6 +18,11 @@
 	</properties>
 	<dependencies>
 		<dependency>
+			<groupId>br.com.app.conatus</groupId>
+			<artifactId>conatus-commons</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
@@ -25,7 +30,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>

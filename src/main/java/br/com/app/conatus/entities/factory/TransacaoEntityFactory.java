@@ -1,8 +1,8 @@
 package br.com.app.conatus.entities.factory;
 
-import br.com.app.conatus.entities.PessoaFisicaEntity;
-import br.com.app.conatus.entities.TenantEntity;
-import br.com.app.conatus.entities.TransacaoEntity;
+import br.com.app.conatus.commons.entities.PessoaFisicaEntity;
+import br.com.app.conatus.commons.entities.TenantEntity;
+import br.com.app.conatus.commons.entities.TransacaoEntity;
 
 public class TransacaoEntityFactory {
 

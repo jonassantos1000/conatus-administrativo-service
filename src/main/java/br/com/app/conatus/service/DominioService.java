@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import br.com.app.conatus.entities.DominioEntity;
-import br.com.app.conatus.enums.CodigoDominio;
-import br.com.app.conatus.infra.exceptions.NaoEncontradoException;
+import br.com.app.conatus.commons.entities.DominioEntity;
+import br.com.app.conatus.commons.enums.CodigoDominio;
+import br.com.app.conatus.commons.exceptions.NaoEncontradoException;
 import br.com.app.conatus.model.factory.DominioResponseFactory;
 import br.com.app.conatus.model.response.DominioResponse;
 import br.com.app.conatus.repositories.DominioRepository;

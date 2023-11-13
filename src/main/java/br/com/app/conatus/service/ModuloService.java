@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import br.com.app.conatus.entities.ModuloEntity;
-import br.com.app.conatus.infra.exceptions.NaoEncontradoException;
+import br.com.app.conatus.commons.entities.ModuloEntity;
+import br.com.app.conatus.commons.exceptions.NaoEncontradoException;
 import br.com.app.conatus.model.factory.ModuloResponseFactory;
 import br.com.app.conatus.model.response.ModuloRecordResponse;
 import br.com.app.conatus.repositories.ModuloRepository;

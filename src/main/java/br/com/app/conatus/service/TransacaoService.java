@@ -2,9 +2,9 @@ package br.com.app.conatus.service;
 
 import org.springframework.stereotype.Service;
 
-import br.com.app.conatus.entities.PessoaFisicaEntity;
-import br.com.app.conatus.entities.TenantEntity;
-import br.com.app.conatus.entities.TransacaoEntity;
+import br.com.app.conatus.commons.entities.PessoaFisicaEntity;
+import br.com.app.conatus.commons.entities.TenantEntity;
+import br.com.app.conatus.commons.entities.TransacaoEntity;
 import br.com.app.conatus.entities.factory.TransacaoEntityFactory;
 import br.com.app.conatus.repositories.TransacaoRepository;
 import lombok.RequiredArgsConstructor;

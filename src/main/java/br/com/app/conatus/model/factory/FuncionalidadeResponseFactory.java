@@ -3,7 +3,7 @@ package br.com.app.conatus.model.factory;
 import java.util.List;
 import java.util.Objects;
 
-import br.com.app.conatus.entities.FuncionalidadeEntity;
+import br.com.app.conatus.commons.entities.FuncionalidadeEntity;
 import br.com.app.conatus.model.response.FuncionalidadeResponse;
 
 public class FuncionalidadeResponseFactory {
