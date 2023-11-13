@@ -17,7 +17,7 @@
     <mirrors>
         <mirror>
             <id>nexus</id>
-            <mirrorOf>central</mirrorOf>
+            <mirrorOf>*</mirrorOf>
             <url>http://${env.NEXUS_HOST}/repository/mvn-conatus-sa</url>
         </mirror>
     </mirrors>
