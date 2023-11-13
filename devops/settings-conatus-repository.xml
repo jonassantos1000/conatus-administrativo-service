@@ -33,12 +33,6 @@
                     <snapshots><enabled>true</enabled></snapshots>
                     <url>http://${env.NEXUS_HOST}/repository/mvn-conatus-sa/</url>
                 </repository>
-                <repository>
-                    <id>central</id>
-                    <url>https://repo.maven.apache.org/maven2</url>
-                    <releases><enabled>true</enabled></releases>
-                    <snapshots><enabled>true</enabled></snapshots>
-                </repository>
             </repositories>
         </profile>
     </profiles>

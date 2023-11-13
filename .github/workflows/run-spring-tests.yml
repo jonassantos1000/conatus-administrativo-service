@@ -28,6 +28,7 @@ jobs:
     - name: copiar settings-conatus-repository.xml
       run: |
         envsubst < devops/settings-conatus-repository.xml > $HOME/.m2/settings.xml
+        export MAVEN_HOME=$HOME/.m2/settings.xml
 
     - name: Executar Testes
       run: |
