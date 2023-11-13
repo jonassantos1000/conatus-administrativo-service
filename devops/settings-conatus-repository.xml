@@ -17,8 +17,8 @@
     <mirrors>
         <mirror>
             <id>nexus</id>
-            <mirrorOf>*</mirrorOf>
-            <url>http://central</url>
+            <mirrorOf>!central</mirrorOf>
+            <url>http://${env.NEXUS_HOST}/repository/maven-public</url>
         </mirror>
     </mirrors>
 
