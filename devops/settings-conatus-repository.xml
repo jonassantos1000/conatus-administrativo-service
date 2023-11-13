@@ -1,0 +1,50 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                              http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+    <localRepository>C:\dev\server\.m2</localRepository>
+
+    <servers>
+        <!-- Configuração do servidor Nexus -->
+        <server>
+            <id>conatus-sa</id>
+            <username>${env.NEXUS_USERNAME}</username>
+            <password>${env.NEXUS_PASSWORD}</password>
+        </server>
+    </servers>
+
+    <mirrors>
+        <mirror>
+            <id>nexus</id>
+            <mirrorOf>*</mirrorOf>
+            <url>http://${env.NEXUS_HOST}/repository/maven-public</url>
+        </mirror>
+    </mirrors>
+
+    <profiles>
+        <profile>
+            <id>nexus</id>
+            <repositories>
+                <!-- Repositório Nexus -->
+                <repository>
+                    <id>mvn-conatus-sa</id>
+                    <releases><enabled>true</enabled></releases>
+                    <snapshots><enabled>true</enabled></snapshots>
+                    <url>http://${env.NEXUS_HOST}/repository/mvn-conatus-sa/</url>
+                </repository>
+                <repository>
+                    <id>central</id>
+                    <url>https://repo.maven.apache.org/maven2</url>
+                    <releases><enabled>true</enabled></releases>
+                    <snapshots><enabled>true</enabled></snapshots>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
+
+    <activeProfiles>
+        <!-- Ativar o perfil Nexus -->
+        <activeProfile>nexus</activeProfile>
+    </activeProfiles>
+</settings>
