@@ -2,11 +2,11 @@ package br.com.app.conatus.entities.factory;
 
 import java.math.BigDecimal;
 
-import br.com.app.conatus.entities.DominioEntity;
-import br.com.app.conatus.entities.TenantModuloFuncCustomEntity;
-import br.com.app.conatus.entities.MovimentacaoModuloEntity;
-import br.com.app.conatus.entities.TenantModuloEntity;
-import br.com.app.conatus.entities.TransacaoEntity;
+import br.com.app.conatus.commons.entities.DominioEntity;
+import br.com.app.conatus.commons.entities.MovimentacaoModuloEntity;
+import br.com.app.conatus.commons.entities.TenantModuloEntity;
+import br.com.app.conatus.commons.entities.TenantModuloFuncCustomEntity;
+import br.com.app.conatus.commons.entities.TransacaoEntity;
 
 public class MovimentacaoModuloEntityFactory {
 

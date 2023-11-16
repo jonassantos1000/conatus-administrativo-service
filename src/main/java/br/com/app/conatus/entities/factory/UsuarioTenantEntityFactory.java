@@ -1,9 +1,9 @@
 package br.com.app.conatus.entities.factory;
 
-import br.com.app.conatus.entities.DominioEntity;
-import br.com.app.conatus.entities.TenantEntity;
-import br.com.app.conatus.entities.UsuarioEntity;
-import br.com.app.conatus.entities.UsuarioTenantEntity;
+import br.com.app.conatus.commons.entities.DominioEntity;
+import br.com.app.conatus.commons.entities.TenantEntity;
+import br.com.app.conatus.commons.entities.UsuarioEntity;
+import br.com.app.conatus.commons.entities.UsuarioTenantEntity;
 
 public class UsuarioTenantEntityFactory {
 	

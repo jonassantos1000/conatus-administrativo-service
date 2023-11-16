@@ -2,11 +2,11 @@ package br.com.app.conatus.entities.factory;
 
 import java.time.LocalDateTime;
 
-import br.com.app.conatus.constantes.Constante;
-import br.com.app.conatus.entities.DominioEntity;
-import br.com.app.conatus.entities.TenantModuloFuncCustomEntity;
-import br.com.app.conatus.entities.FuncionalidadeEntity;
-import br.com.app.conatus.entities.TenantModuloEntity;
+import br.com.app.conatus.commons.constantes.Constante;
+import br.com.app.conatus.commons.entities.DominioEntity;
+import br.com.app.conatus.commons.entities.FuncionalidadeEntity;
+import br.com.app.conatus.commons.entities.TenantModuloEntity;
+import br.com.app.conatus.commons.entities.TenantModuloFuncCustomEntity;
 
 public class FuncionalidadeCustomizadaEntityFactory {
 

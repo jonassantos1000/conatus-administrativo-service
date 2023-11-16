@@ -2,10 +2,10 @@ package br.com.app.conatus.service;
 
 import org.springframework.stereotype.Service;
 
-import br.com.app.conatus.entities.PessoaFisicaEntity;
+import br.com.app.conatus.commons.entities.PessoaFisicaEntity;
+import br.com.app.conatus.commons.enums.CodigoDominio;
+import br.com.app.conatus.commons.exceptions.MsgException;
 import br.com.app.conatus.entities.factory.PessoaFisicaEntityFactory;
-import br.com.app.conatus.enums.CodigoDominio;
-import br.com.app.conatus.infra.exceptions.MsgException;
 import br.com.app.conatus.model.request.UsuarioRecordRequest;
 import br.com.app.conatus.repositories.PessoaFisicaRepository;
 import lombok.RequiredArgsConstructor;

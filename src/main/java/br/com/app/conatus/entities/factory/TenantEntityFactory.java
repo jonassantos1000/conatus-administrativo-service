@@ -3,9 +3,9 @@ package br.com.app.conatus.entities.factory;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
-import br.com.app.conatus.constantes.Constante;
-import br.com.app.conatus.entities.PessoaJuridicaEntity;
-import br.com.app.conatus.entities.TenantEntity;
+import br.com.app.conatus.commons.constantes.Constante;
+import br.com.app.conatus.commons.entities.PessoaJuridicaEntity;
+import br.com.app.conatus.commons.entities.TenantEntity;
 
 public class TenantEntityFactory {
 	private TenantEntityFactory() {}

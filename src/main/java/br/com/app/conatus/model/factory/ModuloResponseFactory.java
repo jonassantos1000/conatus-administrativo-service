@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-import br.com.app.conatus.entities.ModuloEntity;
+import br.com.app.conatus.commons.entities.ModuloEntity;
 import br.com.app.conatus.model.response.ModuloRecordResponse;
 
 public class ModuloResponseFactory {

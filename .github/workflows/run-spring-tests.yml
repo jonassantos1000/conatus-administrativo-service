@@ -9,6 +9,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
+      NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
+      NEXUS_HOST: ${{ secrets.NEXUS_HOST }}
+
     steps:
     - name: Checkout do código
       uses: actions/checkout@v2
@@ -19,6 +24,11 @@ jobs:
         java-version: '17'
         distribution: 'adopt'
         cache: maven
+
+    - name: copiar settings-conatus-repository.xml
+      run: |
+        envsubst < devops/settings-conatus-repository.xml > $HOME/.m2/settings.xml
+        export MAVEN_HOME=$HOME/.m2/settings.xml
 
     - name: Executar Testes
       run: |

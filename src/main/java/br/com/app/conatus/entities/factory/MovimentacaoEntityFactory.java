@@ -2,9 +2,9 @@ package br.com.app.conatus.entities.factory;
 
 import java.math.BigDecimal;
 
-import br.com.app.conatus.entities.DominioEntity;
-import br.com.app.conatus.entities.MovimentacaoEntity;
-import br.com.app.conatus.entities.TransacaoEntity;
+import br.com.app.conatus.commons.entities.DominioEntity;
+import br.com.app.conatus.commons.entities.MovimentacaoEntity;
+import br.com.app.conatus.commons.entities.TransacaoEntity;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 

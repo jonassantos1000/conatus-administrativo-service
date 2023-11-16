@@ -9,6 +9,10 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import br.com.app.conatus.commons.exceptions.DetalheErroResponse;
+import br.com.app.conatus.commons.exceptions.ErroResponse;
+import br.com.app.conatus.commons.exceptions.MsgException;
+import br.com.app.conatus.commons.exceptions.NaoEncontradoException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 
