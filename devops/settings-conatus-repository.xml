@@ -20,6 +20,12 @@
             <mirrorOf>central</mirrorOf>
             <url>https://repo.maven.apache.org/maven2/</url>
         </mirror>
+        <mirror>
+            <id>maven-default-http-blocker</id>
+            <mirrorOf>espelho-ficticio</mirrorOf>
+            <name>Sobreescreve bloqueio padrao do http realizado pelo amven</name>
+            <url>http://0.0.0.0/</url>
+        </mirror>
     </mirrors>
 
     <profiles>
