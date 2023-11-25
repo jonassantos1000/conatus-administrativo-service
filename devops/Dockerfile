@@ -6,7 +6,7 @@ COPY . .
 
 RUN apt-get install maven -y
 
-envsubst < ./settings-conatus-repository.xml > $HOME/.m2/settings.xml
+COPY settings-conatus-repository.xml $HOME/.m2/settings.xml
 export MAVEN_HOME=$HOME/.m2/settings.xml
 
 RUN mvn clean install
