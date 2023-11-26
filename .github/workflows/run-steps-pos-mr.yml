@@ -1,4 +1,4 @@
-name: Executa Testes Unitários
+name: Gerar tag e realizar deploy
 
 on:
   pull_request:
