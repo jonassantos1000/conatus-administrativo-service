@@ -50,7 +50,7 @@ jobs:
         mvn clean install -DskipTests -Dmaven.finalName=$JAR_NAME
 
         # Realiza o deploy no Nexus usando o perfil nexus e especifica o nome do arquivo JAR
-        mvn deploy -DskipTests -Pnexus -Dfile=target/$JAR_NAME -DpomFile=pom.xml
+        mvn deploy -DskipTests -Pnexus -Dfile=target/$JAR_NAME -DpomFile=pom.xml -DskipDeploy=true
 
         # Baixa o JAR do Nexus
         wget http://nexus-host/repository/mvn-conatus-sa/$VERSION/$JAR_NAME
