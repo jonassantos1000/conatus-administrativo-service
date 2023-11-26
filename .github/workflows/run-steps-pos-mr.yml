@@ -34,7 +34,7 @@ jobs:
       if: github.event.pull_request.merged == true
       run: |
         # Obtém a versão do application.properties
-        VERSION=$(grep 'conatus.versao' application.properties | cut -d'=' -f2)
+        VERSION=$(grep 'conatus.versao' "./src/main/resources/application.properties" | cut -d'=' -f2)
 
         # Gerar uma tag com a versão do application.properties
         git tag $VERSION
