@@ -65,9 +65,6 @@ jobs:
         # Baixa o JAR do Nexus
         wget --http-user=${NEXUS_USERNAME} --http-password=${NEXUS_PASSWORD} -O "${JAR_NAME}" "http://${NEXUS_HOST}/repository/mvn-conatus-sa//br/com/app/conatus/conatus-administrativo-service/${VERSION}/${JAR_NAME}"
 
-
-        gcloud auth activate-service-account --key-file=/tmp/key.json
-
         # Envia o JAR para o GCE
         gcloud compute scp $JAR_NAME ${{ secrets.INSTANCE_NAME }}:/etc/dev/conatus --strict-host-key-checking=no --quiet --zone=${{ secrets.ZONE }} --project=${{ secrets.GCLOUD_PROJECT_ID }}
 
