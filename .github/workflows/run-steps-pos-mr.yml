@@ -60,7 +60,7 @@ jobs:
         mvn versions:set -DnewVersion=$VERSION
 
         # Realiza o deploy no Nexus usando o perfil nexus e especifica o nome do arquivo JAR
-        mvn deploy -DskipTests -Pnexus -Dfile=target/$JAR_NAME -DpomFile=pom.xml -DaltDeploymentRepository=nexus::default::http://${NEXUS_HOST}/repository/mvn-conatus-sa/
+        mvn deploy -Dmaven.metadata.legacy=true -DskipTests -Pnexus -Dfile=target/$JAR_NAME -DpomFile=pom.xml -DaltDeploymentRepository=nexus::default::http://${NEXUS_HOST}/repository/mvn-conatus-sa/
 
         # Baixa o JAR do Nexus
         wget --http-user=${NEXUS_USERNAME} --http-password=${NEXUS_PASSWORD} -O "${JAR_NAME}" "http://${NEXUS_HOST}/repository/mvn-conatus-sa//br/com/app/conatus/conatus-administrativo-service/${VERSION}/${JAR_NAME}"
