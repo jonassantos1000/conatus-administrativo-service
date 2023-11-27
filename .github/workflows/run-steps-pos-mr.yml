@@ -53,7 +53,7 @@ jobs:
         mvn deploy -DskipTests -Pnexus -Dfile=target/$JAR_NAME -DpomFile=pom.xml -DskipDeploy=true
 
         # Baixa o JAR do Nexus
-        wget http://${NEXUS_HOST}/repository/mvn-conatus-sa/$VERSION/$JAR_NAME
+        wget --http-user=${NEXUS_USERNAME} --http-password=${NEXUS_PASSWORD} -O "${JAR_NAME}" "http://${NEXUS_HOST}/repository/mvn-conatus-sa/${VERSION}/${JAR_NAME}"
 
         # Configura as credenciais do Google Cloud
         echo ${{ secrets.GCLOUD_SERVICE_KEY }} > /tmp/key.json
