@@ -61,11 +61,13 @@ jobs:
         # Configura as credenciais do Google Cloud
         echo ${{ secrets.GCLOUD_SERVICE_KEY }} > /tmp/key.json
 
+        gcloud auth activate-service-account --key-file=/tmp/key.json
+
         # Envia o JAR para o GCE
-        gcloud compute scp $JAR_NAME ${{ secrets.INSTANCE_NAME }}:/etc/dev/conatus --strict-host-key-checking=no --quiet --zone=${{ secrets.ZONE }} --project=${{ secrets.GCLOUD_PROJECT_ID }} --key-file=/tmp/key.json
+        gcloud compute scp $JAR_NAME ${{ secrets.INSTANCE_NAME }}:/etc/dev/conatus --strict-host-key-checking=no --quiet --zone=${{ secrets.ZONE }} --project=${{ secrets.GCLOUD_PROJECT_ID }}
 
         # Executa o JAR no GCE
-        gcloud compute ssh ${{ secrets.INSTANCE_NAME }} --command "java -jar /etc/dev/conatus/$JAR_NAME &" --strict-host-key-checking=no --quiet --zone=${{ secrets.ZONE }} --project=${{ secrets.GCLOUD_PROJECT_ID }} --key-file=/tmp/key.json
+        gcloud compute ssh ${{ secrets.INSTANCE_NAME }} --command "java -jar /etc/dev/conatus/$JAR_NAME &" --strict-host-key-checking=no --quiet --zone=${{ secrets.ZONE }} --project=${{ secrets.GCLOUD_PROJECT_ID }}
 
     - name: Comentar no PR
       uses: actions/github-script@v6
