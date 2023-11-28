@@ -12,7 +12,7 @@
 	<groupId>br.com.app.conatus</groupId>
 	<artifactId>conatus-administrativo-service</artifactId>
 	<name>conatus-administrativo-service</name>
-	
+	<version>1.0.0</version>
 	<description>arquitetura de multitenancy no conatus</description>
 	
 	<properties>
