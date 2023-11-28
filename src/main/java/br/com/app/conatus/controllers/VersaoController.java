@@ -20,11 +20,11 @@ public class VersaoController {
 	@GetMapping
 	public Map<String, Object> consultarVersao() {
 		
-		Map<String, Object> versao = new HashMap<>();
+		Map<String, Object> response = new HashMap<>();
 		
-		versao.put("versao", versao);
+		response.put("versao", this.versao);
 		
-		return versao;
+		return response;
 	}
 
 }
