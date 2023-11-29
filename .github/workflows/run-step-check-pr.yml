@@ -48,12 +48,11 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
-            VERSION=$(grep 'conatus.versao' "./src/main/resources/application.properties" | cut -d'=' -f2)
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '⚠️ A versão $VERSION já foi utilizada. Por favor, atualize a versão no arquivo application.properties'
+              body: '⚠️ A versão já foi utilizada. Por favor, atualize a versão no arquivo application.properties'
             })
 
     - name: Executar Testes
