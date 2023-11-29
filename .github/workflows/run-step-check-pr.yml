@@ -57,12 +57,13 @@ jobs:
             })
 
     - name: Executar Testes
-      if: success()
+      if: steps.checkTag.outputs.exists == false
       run: |
         # Executar testes unitários do Spring.
         mvn test -Dspring.profiles.active=test
 
     - name: Comentar no PR
+      if: steps.checkTag.outputs.exists == false
       uses: actions/github-script@v6
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
