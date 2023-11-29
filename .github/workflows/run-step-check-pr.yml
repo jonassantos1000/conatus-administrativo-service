@@ -30,23 +30,22 @@ jobs:
         envsubst < devops/settings-conatus-repository.xml > $HOME/.m2/settings.xml
         export MAVEN_HOME=$HOME/.m2/settings.xml
 
-    - name: Verificar existência da tag
-      id: isTagExistente
+    - name: Obter versão da tag
+      id: obter-versao-tag
       run: |
         VERSION=$(grep 'conatus.versao' "./src/main/resources/application.properties" | cut -d'=' -f2)
-        TAG_EXISTS=$(git rev-parse --verify --quiet "refs/tags/$VERSION")
+        echo "Versão da tag: $VERSION"
+        echo "::set-output name=VERSION::$VERSION"
 
-        if [ -n "$TAG_EXISTS" ]; then
-          echo "Tag $VERSION já existe."
-          
-          echo "::set-output name=response::1"
-        else
-          echo "::set-output name=response::0"
-        fi
+    - name: Verificar existência da tag
+      uses: mukunku/tag-exists-action@v1.4.0
+        id: checkTag
+        with:
+        tag: ${{ steps.obter-versao-tag.outputs.VERSION }}
 
-    - name: Comentar no PR
+    - name: Comentar Falha no PR
       uses: actions/github-script@v6
-      if: steps.isTagExistente.outputs.response == 1
+      if: steps.checkTag.outputs.exists == 'true'
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
