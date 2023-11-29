@@ -31,7 +31,6 @@ jobs:
         export MAVEN_HOME=$HOME/.m2/settings.xml
 
     - name: Verificar versao tag
-      id: check-tag
       run: |
         VERSION=$(grep 'conatus.versao' "./src/main/resources/application.properties" | cut -d'=' -f2)
         TAG_EXISTS=$(git rev-parse --verify --quiet "refs/tags/$VERSION")
@@ -47,7 +46,7 @@ jobs:
         fi
 
     - name: Executar Testes
-      needs: check-tag
+      if: success()
       run: |
         # Executar testes unitários do Spring.
         mvn test -Dspring.profiles.active=test
