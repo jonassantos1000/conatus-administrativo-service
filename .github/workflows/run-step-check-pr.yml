@@ -36,10 +36,19 @@ jobs:
         TAG_EXISTS=$(git rev-parse --verify --quiet "refs/tags/$VERSION")
 
         if [ -n "$TAG_EXISTS" ]; then
+          echo "A tag $VERSION já existe."
           COMMENT="⚠️ A versão $VERSION já foi utilizada. Por favor, atualize a versão no arquivo 'application.properties'"
+          GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}"
+          REPO_OWNER="${{ github.repository_owner }}"
+          REPO_NAME="${{ github.event.repository.name }}"
+          PR_NUMBER="${{ github.event.number }}"
 
-          github script -t "${{ secrets.GITHUB_TOKEN }}" -o "${{ github.repository_owner }}" -r "${{ github.event.repository.name }}" -i "${{ github.event.number }}" -p "github.rest.issues.createComment({ issue_number: context.issue.number, owner: context.repo.owner, repo: context.repo.repo, body: '$COMMENT' })"
-        
+          curl -sSL \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            -d "{\"body\":\"$COMMENT\"}" \
+            "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/issues/$PR_NUMBER/comments"
+   
           exit 1
         else
           echo "A tag $VERSION não existe. Continuando..."
