@@ -56,14 +56,17 @@ jobs:
               body: '⚠️ A versão já foi utilizada. Por favor, atualize a versão no arquivo application.properties'
             })
 
+    - name: Cancela execução caso a tag já exista
+      if: steps.checkTag.outputs.exists == 'true'
+      run: |
+        exit 1
+
     - name: Executar Testes
-      if: steps.checkTag.outputs.exists == false
       run: |
         # Executar testes unitários do Spring.
         mvn test -Dspring.profiles.active=test
 
     - name: Comentar no PR
-      if: steps.checkTag.outputs.exists == false
       uses: actions/github-script@v6
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
