@@ -1,4 +1,4 @@
-name: Executa Testes Unitários
+name: Checks Pull Request
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  checks-pr:
     runs-on: ubuntu-latest
 
     env:
@@ -30,7 +30,24 @@ jobs:
         envsubst < devops/settings-conatus-repository.xml > $HOME/.m2/settings.xml
         export MAVEN_HOME=$HOME/.m2/settings.xml
 
+    - name: Verificar versao tag
+      id: check-tag
+      run: |
+        VERSION=$(grep 'conatus.versao' "./src/main/resources/application.properties" | cut -d'=' -f2)
+        TAG_EXISTS=$(git rev-parse --verify --quiet "refs/tags/$VERSION")
+
+        if [ -n "$TAG_EXISTS" ]; then
+          COMMENT="⚠️ A versão $VERSION já foi utilizada. Por favor, atualize a versão no arquivo 'application.properties'"
+
+          github script -t "${{ secrets.GITHUB_TOKEN }}" -o "${{ github.repository_owner }}" -r "${{ github.event.repository.name }}" -i "${{ github.event.number }}" -p "github.rest.issues.createComment({ issue_number: context.issue.number, owner: context.repo.owner, repo: context.repo.repo, body: '$COMMENT' })"
+        
+          exit 1
+        else
+          echo "A tag $VERSION não existe. Continuando..."
+        fi
+
     - name: Executar Testes
+      needs: check-tag
       run: |
         # Executar testes unitários do Spring.
         mvn test -Dspring.profiles.active=test
