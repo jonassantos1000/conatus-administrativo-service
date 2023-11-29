@@ -34,7 +34,9 @@ jobs:
       id: isTagExistente
       run: |
         VERSION=$(grep 'conatus.versao' "./src/main/resources/application.properties" | cut -d'=' -f2)
-        if git rev-parse --quiet --verify "refs/tags/$VERSION" >/dev/null; then
+        TAG_EXISTS=$(git rev-parse --verify --quiet "refs/tags/$VERSION")
+
+        if [ -n "$TAG_EXISTS" ]; then
           echo "Tag $VERSION já existe."
           
           echo "::set-output name=response::1"
