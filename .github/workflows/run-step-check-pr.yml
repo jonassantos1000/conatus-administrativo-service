@@ -41,7 +41,7 @@ jobs:
       uses: mukunku/tag-exists-action@v1.4.0
       id: checkTag
       with:
-      tag: ${{ steps.obter-versao-tag.outputs.VERSION }}
+        tag: ${{ steps.obter-versao-tag.outputs.VERSION }}
 
     - name: Comentar Falha no PR
       uses: actions/github-script@v6
