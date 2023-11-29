@@ -31,6 +31,9 @@ jobs:
         export MAVEN_HOME=$HOME/.m2/settings.xml
 
     - name: Verificar versao tag
+      env:
+        URL: ${{ github.event.issue.comments_url }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         VERSION=$(grep 'conatus.versao' "./src/main/resources/application.properties" | cut -d'=' -f2)
         TAG_EXISTS=$(git rev-parse --verify --quiet "refs/tags/$VERSION")
@@ -43,12 +46,13 @@ jobs:
           REPO_NAME="${{ github.event.repository.name }}"
           PR_NUMBER="${{ github.event.number }}"
 
-          curl -sSL \
+          curl \
+            -X POST \
+            $URL \
+            -H "Content-Type: application/json" \
             -H "Authorization: token $GITHUB_TOKEN" \
-            -H "Accept: application/vnd.github.v3+json" \
-            -d "{\"body\":\"$COMMENT\"}" \
-            "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/issues/$PR_NUMBER/comments"
-   
+            --data '{\"body": \"$COMMENT\" }' \
+               
           exit 1
         else
           echo "A tag $VERSION não existe. Continuando..."
