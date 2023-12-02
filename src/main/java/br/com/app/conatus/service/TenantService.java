@@ -15,6 +15,8 @@ import br.com.app.conatus.entities.factory.UsuarioTenantEntityFactory;
 import br.com.app.conatus.model.request.SolicitacaoCadastroTenantRequest;
 import br.com.app.conatus.repositories.TenantRepository;
 import br.com.app.conatus.repositories.UsuarioTenantRepository;
+import br.com.app.conatus.services.DominioService;
+import br.com.app.conatus.services.UsuarioService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 

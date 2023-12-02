@@ -3,7 +3,7 @@ package br.com.app.conatus.entities.factory;
 import br.com.app.conatus.commons.entities.DominioEntity;
 import br.com.app.conatus.commons.entities.PessoaFisicaEntity;
 import br.com.app.conatus.commons.enums.TipoPessoaEnum;
-import br.com.app.conatus.model.request.UsuarioRecordRequest;
+import br.com.app.conatus.commons.model.request.UsuarioRecordRequest;
 
 public class PessoaFisicaEntityFactory {
 

@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.app.conatus.model.response.DominioResponse;
-import br.com.app.conatus.service.DominioService;
+import br.com.app.conatus.commons.model.response.DominioResponse;
+import br.com.app.conatus.services.DominioService;
 import lombok.RequiredArgsConstructor;
 
 @CrossOrigin

@@ -13,6 +13,7 @@ import br.com.app.conatus.entities.factory.VinculoFuncionarioEntityFactory;
 import br.com.app.conatus.model.request.PessoaJuridicaRecordRequest;
 import br.com.app.conatus.repositories.PessoaJuridicaRepository;
 import br.com.app.conatus.repositories.VinculoFuncionarioRepository;
+import br.com.app.conatus.services.DominioService;
 import lombok.RequiredArgsConstructor;
 
 @Service

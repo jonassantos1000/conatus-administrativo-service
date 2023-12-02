@@ -14,9 +14,9 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
 
+import br.com.app.conatus.commons.model.request.UsuarioRecordRequest;
 import br.com.app.conatus.model.request.PessoaJuridicaRecordRequest;
 import br.com.app.conatus.model.request.SolicitacaoCadastroTenantRequest;
-import br.com.app.conatus.model.request.UsuarioRecordRequest;
 
 @SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
 @ActiveProfiles("test")

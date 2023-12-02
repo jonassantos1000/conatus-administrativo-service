@@ -11,6 +11,7 @@ import br.com.app.conatus.commons.entities.TransacaoEntity;
 import br.com.app.conatus.commons.enums.CodigoDominio;
 import br.com.app.conatus.entities.factory.MovimentacaoEntityFactory;
 import br.com.app.conatus.repositories.MovimentacaoRepository;
+import br.com.app.conatus.services.DominioService;
 import lombok.RequiredArgsConstructor;
 
 @Service
