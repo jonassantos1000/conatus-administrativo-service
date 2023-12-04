@@ -23,13 +23,13 @@
 		<dependency>
 			<groupId>br.com.app.conatus</groupId>
 			<artifactId>conatus-commons</artifactId>
-			<version>1.1.0</version>
+			<version>1.1.1</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>br.com.app.conatus</groupId>
 			<artifactId>conatus-service-commons</artifactId>
-			<version>1.1.0</version>
+			<version>1.1.1</version>
 		</dependency>
 		
 		<dependency>
@@ -61,6 +61,29 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+			    <groupId>org.flywaydb</groupId>
+			    <artifactId>flyway-maven-plugin</artifactId>
+			    <configuration>
+			        <user>databaseUser</user>
+			        <password>databasePassword</password>
+			        <schemas>
+			            <schema>schemaName</schema>
+			        </schemas>
+			    </configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 			    <artifactId>maven-compiler-plugin</artifactId>
