@@ -27,7 +27,7 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '⏳︎ Iniciando deploy...'
+              body: '🚀 O Pull Request foi implantado com sucesso no ambiente'
             })
 
     - name: Configurar ambiente
@@ -52,7 +52,6 @@ jobs:
     - name: Gerar Tag
       if: github.event.pull_request.merged == true
       run: |
-
         # Obtém a versão do application.properties
         VERSION=$(grep 'conatus.versao' "./src/main/resources/application.properties" | cut -d'=' -f2)
 
@@ -60,10 +59,9 @@ jobs:
         git tag $VERSION
         git push origin $VERSION
 
-    - name: Gerar build (JAR) e fazer deploy do JAR no Nexus
+    - name: Gerar build (JAR)
       if: github.event.pull_request.merged == true
       run: |
-
         # Obtém o artifactId do projeto Maven
         ARTIFACT_ID=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)
 
@@ -76,13 +74,15 @@ jobs:
         # Atualiza o arquivo POM com a versão correta antes do deploy
         mvn versions:set -DnewVersion=$VERSION
      
+    - name: Deploy do JAR no Nexus
+      if: github.event.pull_request.merged == true
+      run: |
         # Realiza o deploy no Nexus usando o perfil nexus e especifica o nome do arquivo JAR
         mvn deploy -DskipTests -Pnexus -Dfile=target/$JAR_NAME -DpomFile=pom.xml -DaltDeploymentRepository=nexus::default::http://${NEXUS_HOST}/repository/mvn-conatus-sa/
 
     - name: Deploy da aplicação no GCP
       if: github.event.pull_request.merged == true
       run: |
-
         # Baixa o JAR do Nexus
         wget --http-user=${NEXUS_USERNAME} --http-password=${NEXUS_PASSWORD} -O "${JAR_NAME}" "http://${NEXUS_HOST}/repository/mvn-conatus-sa//br/com/app/conatus/conatus-administrativo-service/${VERSION}/${JAR_NAME}"
 
