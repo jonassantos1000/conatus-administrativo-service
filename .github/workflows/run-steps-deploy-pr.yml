@@ -52,6 +52,7 @@ jobs:
     - name: Gerar Tag
       if: github.event.pull_request.merged == true
       run: |
+
         # Obtém a versão do application.properties
         VERSION=$(grep 'conatus.versao' "./src/main/resources/application.properties" | cut -d'=' -f2)
 
@@ -81,6 +82,7 @@ jobs:
     - name: Deploy da aplicação no GCP
       if: github.event.pull_request.merged == true
       run: |
+
         # Baixa o JAR do Nexus
         wget --http-user=${NEXUS_USERNAME} --http-password=${NEXUS_PASSWORD} -O "${JAR_NAME}" "http://${NEXUS_HOST}/repository/mvn-conatus-sa//br/com/app/conatus/conatus-administrativo-service/${VERSION}/${JAR_NAME}"
 
